@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import Profile from './Components/Profile/Profile';
+import Messages from './Components/Messages/Messages';
+import Navbar from './Components/Navbar/Navbar';
+import News from './Components/News/News';
+import Music from './Components/Music/Music';
+import Settings from './Components/Settings/Settings';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+const NotFountPage = () => {
+  return (<>
+    <span>404</span>
+  </>)
+}
+
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className='app_wrapper'>
+        <Header />
+        <main className='page'>
+          <Navbar />
+          <Routes>
+            <Route path='/Profile' element={<Profile />} />
+            <Route path='/Messages' element={<Messages />} />
+            <Route path='/News' element={<News />} />
+            <Route path='/Music' element={<Music />} />
+            <Route path='/Settings' element={<Settings />} />
+            <Route path='*' element={<NotFountPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

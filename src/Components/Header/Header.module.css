@@ -1,0 +1,24 @@
+.header {
+    background-color: #1C3F3A;
+    color: #ECE8D9;
+    width: 102%;
+    display: grid;
+    grid-template-columns: 1fr 10rem;
+  }
+  
+  .logo {
+    width: 5rem;
+    margin: 0.5rem;
+  }
+  
+  .search {
+    position: relative;
+  }
+  
+  .input {
+    background-color: #ECE8D9;
+    border-radius: 0.2rem;
+    min-height: 1.5rem;
+    position: absolute;
+    top: 30%;
+  }

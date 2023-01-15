@@ -1,0 +1,31 @@
+.messageItem {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem; 
+}
+
+.withHow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 30%;
+    min-width: 30%;
+}
+
+.smile {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.message {
+    border: 0.05rem solid black;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+    align-self: center;
+    align-items: center;
+}
+
+.name {
+    text-align: center;
+}
