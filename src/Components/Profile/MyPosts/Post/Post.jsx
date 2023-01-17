@@ -1,5 +1,5 @@
 import classes from './Post.module.css'
-import Like from './Like.png'
+import Like from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/Like.png'
 
 const Post = (props) => {
   return (

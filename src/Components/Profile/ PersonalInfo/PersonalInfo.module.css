@@ -1,0 +1,30 @@
+.picture {
+    margin-bottom: 2rem;
+  }
+  
+  .fon {
+    height: 10rem;
+    width: 100%;
+  }
+
+  .personalData {
+    display: flex;
+  }
+  
+  .photo {
+    height: 6rem;
+    width: 7rem;
+    margin-right: 2rem;
+  }
+  
+  .name {
+    font-size: 2rem;
+  }
+  
+  .info {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  

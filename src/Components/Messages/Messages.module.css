@@ -3,7 +3,8 @@
 }
 
 .dialogList {
-    padding-right: 4rem;
+    padding-right: 5rem;
+    border-right: 0.1rem solid black;
 }
 
 .title {
@@ -11,31 +12,5 @@
     margin-bottom: 1.5rem;
 }
 
-.messageItem {
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-}
-
-.withHow {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.smile {
-    font-size: 3rem;
-    text-align: center;
-}
-
-.message {
-    border: 0.05rem solid black;
-    border-radius: 0.2rem;
-    padding: 0.5rem;
-    align-self: center;
-}
-
-.name {
-    text-align: center;
+.messageList{
 }
