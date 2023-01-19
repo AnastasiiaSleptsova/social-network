@@ -5,9 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+let postText = [
+  {text: 'Hi! Who is here?', like: '5'},
+  {text: 'Hello, it\'s me', like: '3'}
+  ] 
+
 root.render(
   <React.StrictMode>
-    <App />
+    <App postText={postText}/>
   </React.StrictMode>
 );
 

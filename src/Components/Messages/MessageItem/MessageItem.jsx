@@ -1,4 +1,3 @@
-
 import classes from './MessageItem.module.css'
 
 const MessageItem = (props) => {

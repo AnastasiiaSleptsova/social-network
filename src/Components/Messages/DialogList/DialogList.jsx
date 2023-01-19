@@ -7,7 +7,7 @@ const DialogList = (props) => {
     const path = "/Messages/DialogList/" + props.id;
 
     return (
-        <div className={classes.dialog}>
+        <div>
             &deg;
             <NavLink className={generateClassName} to={path}>{props.dialogName}</NavLink>
         </div>
