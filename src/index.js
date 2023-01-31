@@ -3,17 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import state from './redux/state';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let postText = [
-  {text: 'Hi! Who is here?', like: '5'},
-  {text: 'Hello, it\'s me', like: '3'}
-  ] 
-
 root.render(
   <React.StrictMode>
-    <App postText={postText}/>
+    <App state={state}/>
   </React.StrictMode>
 );
 

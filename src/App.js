@@ -16,8 +16,6 @@ const NotFountPage = () => {
   </>)
 }
 
-
-
 const App = (props) => {
   return (
     <BrowserRouter>
@@ -26,8 +24,10 @@ const App = (props) => {
         <main className='page'>
           <Navbar />
           <Routes>
-            <Route path='/Profile' element={<Profile postText={props.postText}/>} />
-            <Route path='/Messages' element={<Messages />} />
+            <Route path='/Profile' element={<Profile
+              state={props.state.profilePage} />} />
+            <Route path='/Messages' element={<Messages
+              state={props.state.messagesPage} />} />
             <Route path='/News' element={<News />} />
             <Route path='/Music' element={<Music />} />
             <Route path='/Settings' element={<Settings />} />
