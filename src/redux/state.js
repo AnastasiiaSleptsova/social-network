@@ -1,3 +1,8 @@
+import avatar1 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar1.webp'
+import avatar2 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar2.jpg';
+import avatar3 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar3.jpg';
+
+
 let state = {
     profilePage: {
         postText: [
@@ -24,6 +29,13 @@ let state = {
             { message: 'How are you?', name: 'Me' },
             { message: 'I\'m fine! What about you?', name: 'Anastasiia' },
             { message: 'I\'m fine too, thanks.', name: 'Me' }
+        ]
+    },
+    navbarPage: {
+        avatarList: [
+            { avatarka: avatar1, altAvatar: 'Avatar1' },
+            { avatarka: avatar2, altAvatar: 'Avatar2' },
+            { avatarka: avatar3, altAvatar: 'Avatar3' }
         ]
     }
 }

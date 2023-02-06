@@ -21,3 +21,16 @@
   .active{
     color: gold;
   } 
+
+  .avatarList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    
+}
+
+  /* .frends {
+    margin-top: 5rem;
+  } */
