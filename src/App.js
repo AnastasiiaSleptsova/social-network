@@ -26,7 +26,8 @@ const App = (props) => {
           <Navbar state={props.state.navbarPage}/>
           <Routes>
             <Route path='/Profile' element={<Profile
-              state={props.state.profilePage} />} />
+              state={props.state.profilePage} 
+              addPost={props.addPost} />}/>
             <Route path='/Messages' element={<Messages
               state={props.state.messagesPage} />} />
             <Route path='/News' element={<News />} />
