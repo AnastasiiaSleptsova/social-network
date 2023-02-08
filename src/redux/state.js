@@ -1,3 +1,4 @@
+import { rerenderEntireTree } from './render';
 import avatar1 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar1.webp'
 import avatar2 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar2.jpg';
 import avatar3 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar3.jpg';
@@ -5,9 +6,9 @@ import avatar3 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-firs
 
 const state = {
     profilePage: {
-        postText: [
-            { text: 'Hi! Who is here?', like: '5' },
-            { text: 'Hello, it\'s me', like: '3' }
+        postList: [
+            { id: 1, text: 'Hi! Who is here?', like: '5' },
+            { id: 2, text: 'Hello, it\'s me', like: '3' }
         ]
     },
     messagesPage: {
@@ -24,11 +25,11 @@ const state = {
             { id: 10, name: "User not found " }
         ],
         messageList: [
-            { message: 'Hello', name: 'Me' },
-            { message: 'Hi!', name: 'Anastasiia' },
-            { message: 'How are you?', name: 'Me' },
-            { message: 'I\'m fine! What about you?', name: 'Anastasiia' },
-            { message: 'I\'m fine too, thanks.', name: 'Me' }
+            { id: 1, message: 'Hello', name: 'Me' },
+            { id: 2, message: 'Hi!', name: 'Anastasiia' },
+            { id: 3, message: 'How are you?', name: 'Me' },
+            { id: 4, message: 'I\'m fine! What about you?', name: 'Anastasiia' },
+            { id: 5, message: 'I\'m fine too, thanks.', name: 'Me' }
         ]
     },
     navbarPage: {
@@ -43,9 +44,25 @@ const state = {
 
 export const addPost = (postMessage) => {
     const newPost = {
+        id: state.profilePage.postList.length + 1,
         text: postMessage,
         like: '0'
     }
-    state.profilePage.posts.push();
+    state.profilePage.postList.push(newPost);
+    rerenderEntireTree()
 }
+
+export const addMessage = (messageText) => {
+    if (messageText) {
+        const newMessage = {
+            id: state.messagesPage.messageList.length + 1,
+            message: messageText,
+            name: 'Me'
+        }
+        state.messagesPage.messageList.push(newMessage);
+        rerenderEntireTree()
+    }
+}
+
+
 export default state;

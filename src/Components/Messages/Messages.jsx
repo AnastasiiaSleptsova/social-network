@@ -12,12 +12,12 @@ const Messages = (props) => {
 
     let newPastElement = React.createRef();
 
-    let addMessage = () => {
+    let onClickHandler = () => {
         let text = newPastElement.current.value;
-        alert(text);
-
-
+        props.addMessage(text);
+        newPastElement.current.value = ""
     }
+
     return (
         <div>
             <div className={classes.messageWrapper}>
@@ -32,7 +32,7 @@ const Messages = (props) => {
             <form className={classes.sendMessage} action='#' name='message'>
                 <input className={classes.input} type='text' ref={newPastElement} placeholder="message..." />
                 <br />
-                <button className={classes.button} type="submit" name="sendMessage" onClick={addMessage}>send</button>
+                <button className={classes.button} type="submit" name="sendMessage" onClick={onClickHandler}>send</button>
             </form>
         </div>
     )
