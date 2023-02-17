@@ -18,7 +18,6 @@ const NotFountPage = () => {
 }
 
 const App = (props) => {
-  console.log('!!! props from APP=', props)
   return (
     <BrowserRouter>
       <div className='app_wrapper'>
@@ -28,12 +27,12 @@ const App = (props) => {
           <Routes>
             <Route path='/Profile' element={<Profile
               profilePage={props.state.profilePage} 
-              addPost={props.addPost} 
-              updateNewPostText={props.updateNewPostText}/>}/>
+              dispatch={props.dispatch} 
+              />}/>
             <Route path='/Messages' element={<Messages
               messagesPage={props.state.messagesPage} 
-              addMessage={props.addMessage} 
-              updateNewMessageText={props.updateNewMessageText}/>} />
+              dispatch={props.dispatch}
+              />} />
             <Route path='/News' element={<News />} />
             <Route path='/Music' element={<Music />} />
             <Route path='/Settings' element={<Settings />} />

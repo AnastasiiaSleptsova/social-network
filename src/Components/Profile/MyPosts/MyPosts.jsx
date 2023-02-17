@@ -3,19 +3,17 @@ import Post from './Post/Post';
 import React from 'react';
 
 const MyPosts = (props) => {
-  console.log('!!! props =', props);
-
   const posts = props.postList.map(post => <Post text={post.text} like={post.like} />);
 
   const newPastElement = React.createRef();
 
   const onClickHandler = () => {
-    props.addPost();
+    props.dispatch({type: 'ADD_POST'});
   }
 
   const onPostChange = () => {
     const text = newPastElement.current.value;
-    props.updateNewPostText(text);
+    props.dispatch({type: 'UPDATE_NEW_POST_TEXT', newText: text});
   }
 
   return (
