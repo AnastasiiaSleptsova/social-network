@@ -1,3 +1,5 @@
+import messagesReducer from './messagesReducer';
+import profileReducer from './profileReducer';
 import avatar1 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar1.webp'
 import avatar2 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar2.jpg';
 import avatar3 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar3.jpg';
@@ -55,55 +57,10 @@ const store = {
         this._callSubscriber = observer;
     },
 
-    _addPost() {
-        const newPost = {
-            id: this._state.profilePage.postList.length + 1,
-            text: this._state.profilePage.newPostText,
-            like: '0'
-        }
-        this._state.profilePage.postList.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-
-    _addMessage() {
-        if (this._state.messagesPage.newMessageText) {
-            const newMessage = {
-                id: this._state.messagesPage.messageList.length + 1,
-                message: this._state.messagesPage.newMessageText,
-                name: 'Me'
-            }
-            this._state.messagesPage.messageList.push(newMessage);
-            this._state.messagesPage.newMessageText = '';
-            this._callSubscriber(this._state)
-        }
-    },
-
-    _updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-
-    _updateNewMessageText(newMessage) {
-        this._state.messagesPage.newMessageText = newMessage;
-        this._callSubscriber(this._state);
-    },
-
     dispatch(action) {
-        // if (action.type === 'ADD_POST') {
-        //     this._addPost();
-        // } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
-        //     this._updateNewPostText(action.newText);
-        // } else if (action.type === 'ADD_MESSAGE') {
-
-        // }
-
-        switch (action.type) {
-            case 'ADD_POST': this._addPost(); break
-            case 'UPDATE_NEW_POST_TEXT': this._updateNewPostText(action.newText); break
-            case 'ADD_MESSAGE': this._addMessage(); break
-            case 'UPDATE_NEW_MESSAGE_TEXT': this._updateNewMessageText(action.newMessage); break
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
+        this._callSubscriber(this._state);
     }
 }
 

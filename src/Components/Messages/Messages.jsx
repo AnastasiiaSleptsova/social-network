@@ -3,6 +3,7 @@ import DialogList from './DialogList/DialogList';
 import MessageItem from './MessageItem/MessageItem';
 import classes from './Messages.module.css'
 import React from 'react';
+import { addMessageActionCreator, updateNewMessageActionCreator } from '../../redux/messagesReducer';
 
 
 const Messages = (props) => {
@@ -13,14 +14,12 @@ const Messages = (props) => {
     const newPastElement = React.createRef();
 
     const onClickHandler = () => {
-        let text = newPastElement.current.value;
-        props.dispatch({ type: 'ADD_MESSAGE' });
-        newPastElement.current.value = ""
+        props.dispatch(addMessageActionCreator());
     }
 
     const onMessageChange = () => {
         const text = newPastElement.current.value;
-        props.dispatch({ type: 'UPDATE_NEW_MESSAGE_TEXT', newMessage: text });
+        props.dispatch(updateNewMessageActionCreator(text));
     }
 
     return (
