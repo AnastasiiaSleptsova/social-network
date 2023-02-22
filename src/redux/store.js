@@ -1,4 +1,5 @@
 import messagesReducer from './messagesReducer';
+import navbarReducer from './navbarReducer';
 import profileReducer from './profileReducer';
 import avatar1 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar1.webp'
 import avatar2 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar2.jpg';
@@ -60,6 +61,7 @@ const store = {
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
+        this._state.navbarPage = navbarReducer(this._state.navbarPage, action);
         this._callSubscriber(this._state);
     }
 }
