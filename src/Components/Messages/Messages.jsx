@@ -3,23 +3,17 @@ import DialogList from './DialogList/DialogList';
 import MessageItem from './MessageItem/MessageItem';
 import classes from './Messages.module.css'
 import React from 'react';
-import { addMessageActionCreator, updateNewMessageActionCreator } from '../../redux/messagesReducer';
 
+const Messages = ({ messagesPage, addNewMessage, onMessageInputChange }) => {
+    const dialogs = messagesPage.dialogsData.map(dialogs => <DialogList dialogName={dialogs.name} id={dialogs.id} />);
 
-const Messages = (props) => {
-    const dialogs = props.messagesPage.dialogsData.map(dialogs => <DialogList dialogName={dialogs.name} id={dialogs.id} />);
-
-    const messages = props.messagesPage.messageList.map(messages => <MessageItem message={messages.message} name={messages.name} />);
+    const messages = messagesPage.messageList.map(messages => <MessageItem message={messages.message} name={messages.name} />);
 
     const newPastElement = React.createRef();
 
-    const onClickHandler = () => {
-        props.dispatch(addMessageActionCreator());
-    }
-
     const onMessageChange = () => {
         const text = newPastElement.current.value;
-        props.dispatch(updateNewMessageActionCreator(text));
+        onMessageInputChange(text);
     }
 
     return (
@@ -38,9 +32,9 @@ const Messages = (props) => {
                     className={classes.input}
                     ref={newPastElement}
                     onChange={onMessageChange}
-                    value={props.messagesPage.newMessageText}
+                    value={messagesPage.newMessageText}
                     placeholder="message..." ></textarea>
-                <button className={classes.button} type="submit" name="sendMessage" onClick={onClickHandler}>send</button>
+                <button className={classes.button} type="submit" name="sendMessage" onClick={addNewMessage}>send</button>
             </div>
         </div>
     )

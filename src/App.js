@@ -10,6 +10,7 @@ import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Frends from './Components/Frends/Frends';
+import MessagesContainer from './Components/Messages/MessagesContainer';
 
 const NotFountPage = () => {
   return (<>
@@ -23,16 +24,26 @@ const App = (props) => {
       <div className='app_wrapper'>
         <Header />
         <main className='page'>
-          <Navbar state={props.state.navbarPage}/>
+          <Navbar state={props.state.navbarPage} />
           <Routes>
-            <Route path='/Profile' element={<Profile
-              profilePage={props.state.profilePage} 
-              dispatch={props.dispatch} 
-              />}/>
-            <Route path='/Messages' element={<Messages
-              messagesPage={props.state.messagesPage} 
-              dispatch={props.dispatch}
-              />} />
+            <Route
+              path='/Profile'
+              element={(
+                <Profile
+                  profilePage={props.state.profilePage}
+                  dispatch={props.dispatch}
+                />
+              )}
+            />
+            <Route
+              path='/Messages'
+              element={(
+                <MessagesContainer
+                  messagesPage={props.state.messagesPage}
+                  dispatch={props.dispatch}
+                />
+              )}
+            />
             <Route path='/News' element={<News />} />
             <Route path='/Music' element={<Music />} />
             <Route path='/Settings' element={<Settings />} />
