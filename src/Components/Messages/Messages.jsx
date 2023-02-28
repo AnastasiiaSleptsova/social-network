@@ -16,6 +16,8 @@ const Messages = ({ messagesPage, addNewMessage, onMessageInputChange }) => {
         onMessageInputChange(text);
     }
 
+    const onClickHandler = () => newPastElement.current.value && addNewMessage()
+
     return (
         <div>
             <div className={classes.messageWrapper}>
@@ -34,7 +36,7 @@ const Messages = ({ messagesPage, addNewMessage, onMessageInputChange }) => {
                     onChange={onMessageChange}
                     value={messagesPage.newMessageText}
                     placeholder="message..." ></textarea>
-                <button className={classes.button} type="submit" name="sendMessage" onClick={addNewMessage}>send</button>
+                <button className={classes.button} type="submit" name="sendMessage" onClick={onClickHandler}>send</button>
             </div>
         </div>
     )

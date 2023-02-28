@@ -1,9 +1,8 @@
-
 import './App.css';
+import React from 'react';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import Profile from './Components/Profile/Profile';
-import Messages from './Components/Messages/Messages';
 import Navbar from './Components/Navbar/Navbar';
 import News from './Components/News/News';
 import Music from './Components/Music/Music';
@@ -13,9 +12,9 @@ import Frends from './Components/Frends/Frends';
 import MessagesContainer from './Components/Messages/MessagesContainer';
 
 const NotFountPage = () => {
-  return (<>
+  return (
     <span>404</span>
-  </>)
+  )
 }
 
 const App = (props) => {
@@ -24,24 +23,18 @@ const App = (props) => {
       <div className='app_wrapper'>
         <Header />
         <main className='page'>
-          <Navbar state={props.state.navbarPage} />
+          <Navbar />
           <Routes>
             <Route
               path='/Profile'
               element={(
-                <Profile
-                  profilePage={props.state.profilePage}
-                  dispatch={props.dispatch}
-                />
+                <Profile />
               )}
             />
             <Route
               path='/Messages'
               element={(
-                <MessagesContainer
-                  messagesPage={props.state.messagesPage}
-                  dispatch={props.dispatch}
-                />
+                <MessagesContainer />
               )}
             />
             <Route path='/News' element={<News />} />

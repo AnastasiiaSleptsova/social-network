@@ -1,10 +1,12 @@
+import React from 'react';
+import { connect } from 'react-redux';
 import classes from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
 import FrendList from './FrendList/FrendList';
 
-const Navbar = (props) => {
+const Navbar = ({ avatarList }) => {
   const generateClassName = (navData) => navData.isActive ? `${classes.item} ${classes.active}` : classes.item
-  let avatarList = props.state.avatarList.map(avatar => <FrendList avatarItem={avatar.avatarka} alt={avatar.altAvatar} />);
+  const avatarListJSX = avatarList.map(avatar => <FrendList avatarItem={avatar.avatarka} alt={avatar.altAvatar} />);
 
   return (
     <nav className={classes.sidebar}>
@@ -18,10 +20,18 @@ const Navbar = (props) => {
       <br></br>
       <NavLink className={generateClassName} to='/Frends'>Frends</NavLink>
       <div className={classes.avatarList}>
-        {avatarList}
+        {avatarListJSX}
       </div>
     </nav>
   )
 }
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  avatarList: selectAvatarList(state)
+})
+
+const selectAvatarList = (state) => state.navbarPage.avatarList
+
+const mapDispatchToProps = () => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
