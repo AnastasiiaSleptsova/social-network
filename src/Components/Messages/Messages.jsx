@@ -5,9 +5,9 @@ import classes from './Messages.module.css'
 import React from 'react';
 
 const Messages = ({ messagesPage, addNewMessage, onMessageInputChange }) => {
-    const dialogs = messagesPage.dialogsData.map(dialogs => <DialogList dialogName={dialogs.name} id={dialogs.id} />);
+    const dialogs = messagesPage.dialogsData.map(dialogs => <DialogList dialogName={dialogs.name} key={dialogs.id} id={dialogs.id} />);
 
-    const messages = messagesPage.messageList.map(messages => <MessageItem message={messages.message} name={messages.name} />);
+    const messages = messagesPage.messageList.map(messages => <MessageItem message={messages.message} key={messages.id} name={messages.name} />);
 
     const newPastElement = React.createRef();
 

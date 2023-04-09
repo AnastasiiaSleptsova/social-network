@@ -7,10 +7,10 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 
 const initialState = {
     avatarList: [
-        { avatarka: avatar1, altAvatar: 'Avatar1' },
-        { avatarka: avatar2, altAvatar: 'Avatar2' },
-        { avatarka: avatar3, altAvatar: 'Avatar3' },
-        { avatarka: avatar1, altAvatar: 'Avatar1' },
+        { id: 1, avatarka: avatar1, altAvatar: 'Avatar1' },
+        { id: 2, avatarka: avatar2, altAvatar: 'Avatar2' },
+        { id: 3, avatarka: avatar3, altAvatar: 'Avatar3' },
+        { id: 4, avatarka: avatar1, altAvatar: 'Avatar1' },
     ],
 };
 

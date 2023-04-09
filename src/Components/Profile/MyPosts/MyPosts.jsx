@@ -5,7 +5,7 @@ import React from 'react';
 
 const MyPosts = ({ postList, newPostText, addNewPost, onPostInputChange }) => {
 
-  const posts = postList.map(post => <Post text={post.text} like={post.like} />);
+  const posts = postList.map(post => <Post text={post.text} key={post.id} like={post.like} />);
 
   const newPastElement = React.createRef();
 

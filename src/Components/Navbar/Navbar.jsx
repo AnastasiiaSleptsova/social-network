@@ -6,7 +6,7 @@ import FrendList from './FrendList/FrendList';
 
 const Navbar = ({ avatarList }) => {
   const generateClassName = (navData) => navData.isActive ? `${classes.item} ${classes.active}` : classes.item
-  const avatarListJSX = avatarList.map(avatar => <FrendList avatarItem={avatar.avatarka} alt={avatar.altAvatar} />);
+  const avatarListJSX = avatarList.map(avatar => <FrendList avatarItem={avatar.avatarka} key={avatar.id} alt={avatar.altAvatar} />);
 
   return (
     <nav className={classes.sidebar}>
