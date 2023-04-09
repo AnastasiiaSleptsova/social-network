@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import Footer from './Components/Footer/Footer';
-import Header from './Components/Header/Header';
 import Navbar from './Components/Navbar/Navbar';
 import News from './Components/News/News';
 import Music from './Components/Music/Music';
@@ -10,6 +9,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ProfileContainer from './Components/Profile/ProfileContainer';
 import MessagesContainer from './Components/Messages/MessagesContainer';
 import FrendsContainer from './Components/Friends/FriendsContainer';
+import HeaderContainer from './Components/Header/HeaderContainer';
 
 const NotFountPage = () => {
   return (
@@ -21,7 +21,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className='app_wrapper'>
-        <Header />
+        <HeaderContainer />
         <main className='page'>
           <Navbar />
           <Routes>

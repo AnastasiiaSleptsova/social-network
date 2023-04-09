@@ -2,27 +2,6 @@ const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_FRIENDS_PROFILE = 'SET_FRIENDS_PROFILE';
 
-// aboutMe
-// : 
-// null
-// contacts
-// : 
-// {facebook: null, website: null, vk: null, twitter: null, instagram: null, youtube: null, github: null,…}
-// fullName
-// : 
-// "nelli04"
-// lookingForAJob
-// : 
-// false
-// lookingForAJobDescription
-// : 
-// null
-// photos
-// : 
-// {small: null, large: null}
-// userId
-// : 
-// 28433
 
 const initialState = {
     postList: [

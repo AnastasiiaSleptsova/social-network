@@ -24,7 +24,7 @@ const PersonalInfo = (props) => {
           <div className={classes.info}>
             {props.profile.aboutMe}
             <br />
-            В поисках работы: ${jobStatus}
+            В поисках работы: {jobStatus}
           </div>
         </div>
       </div>
