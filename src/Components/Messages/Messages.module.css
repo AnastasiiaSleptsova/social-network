@@ -12,5 +12,20 @@
     margin-bottom: 1.5rem;
 }
 
-.messageList{
+.sendMessage {
+display: flex;
+flex-direction: row;
+justify-content: end;
+margin: 3rem;
+}
+
+.input {
+ width: 65%;
+ min-height: 3rem;
+}
+
+.button {
+width: 10%;
+background-color: #1C3F3A;;
+color: white;
 }

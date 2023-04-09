@@ -9,6 +9,7 @@ import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Frends from './Components/Frends/Frends';
 
 const NotFountPage = () => {
   return (<>
@@ -22,7 +23,7 @@ const App = (props) => {
       <div className='app_wrapper'>
         <Header />
         <main className='page'>
-          <Navbar />
+          <Navbar state={props.state.navbarPage}/>
           <Routes>
             <Route path='/Profile' element={<Profile
               state={props.state.profilePage} />} />
@@ -31,6 +32,7 @@ const App = (props) => {
             <Route path='/News' element={<News />} />
             <Route path='/Music' element={<Music />} />
             <Route path='/Settings' element={<Settings />} />
+            <Route path='/Frends' element={<Frends />} />
             <Route path='*' element={<NotFountPage />} />
           </Routes>
         </main>
