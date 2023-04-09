@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toogleFollowingAC } from '../../redux/frendsReducer';
+import { toogleFollowingAC, setFriendsAC } from '../../redux/frendsReducer';
 import Frends from './Friends'
 
 const mapStateToProps = (state) => {
@@ -12,8 +12,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         toogleFollowing: (id) => {
+            console.log('задиспатчили экшен');
             dispatch(toogleFollowingAC(id));
         },
+        setFriends: (friends) => {
+            dispatch(setFriendsAC(friends));
+        }
     }
 }
 

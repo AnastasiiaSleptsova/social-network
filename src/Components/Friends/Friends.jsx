@@ -1,21 +1,48 @@
 import classes from './Friends.module.css'
 import React from 'react';
 import FriendsItem from './FriendItem';
+import axios from 'axios';
 
-const Friends = ({ friends, toogleFollowing }) => {
+const getFriends = (number) => new Array(number).fill(null).map((el, idx) => ({
+    // id: idx + 1,
+    // firstName: `Nastya_${idx + 1}`,
+    // lastName: idx % 2 === 0 ? 'Иванова' : 'Петрова',
+    // avatar: 'https://itbizlab.ru/wp-content/uploads/salemanager.png',
+    // isFriend: idx % 3 === 0 ? true : false,
+    // nikname: `myNik ${idx + 1}`
+    
+    
+    // id: 28315,
+    // followed: false,
+    // name: "Sereban",
+    // photos: { small: null, large: null },
+    // status: null,
+    // uniqueUrlName: null
+}))
+
+
+const Friends = ({ friends, toogleFollowing, setFriends }) => {
+
+
+
+    if (friends.length === 0) {
+        // setFriends(getFriends(10))
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then((resp) => {
+            console.log('!!! resp =', resp)
+            setFriends(resp.data.items)
+        });
+    }
+
+
     return (
         <div className={classes.frendList}>
             {friends.map(friend => (
                 <FriendsItem
                     key={friend.id}
-                    avatar={friend.avatar}
-                    nikname={friend.nikname}
-                    isFriend={friend.isFriend}
+                    friend={friend}
                     toogleFollowing={toogleFollowing}
-                    id={friend.id}
                 />
             ))}
-
             <button className={classes.button}>Show more</button>
         </div>
     )

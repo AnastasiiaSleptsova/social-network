@@ -1,25 +1,16 @@
 const TOOGLE_FOLLOWING = 'TOOGLE_FOLLOWING'
-
-const getFriends = (number) => new Array(number).fill(null).map((el, idx) => ({
-    id: idx + 1,
-    firstName: `Nastya_${idx + 1}`,
-    lastName: idx % 2 === 0 ? 'Иванова' : 'Петрова',
-    avatar: 'https://itbizlab.ru/wp-content/uploads/salemanager.png',
-    isFriend: idx % 3 === 0 ? true : false,
-    nikname: `myNik ${idx + 1}`
-}))
-
-const friends = getFriends(10)
+const SET_FRIENDS = 'SET_FRIENDS'
 
 const initialState = {
-    friends: friends,
+    friends: [],
 };
 
 const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
         case TOOGLE_FOLLOWING: {
+            console.log('ловим экшен тайпы');
             const newFriends = state.friends.map(friend => friend.id === action.payload.id
-                ? { ...friend, isFriend: !friend.isFriend }
+                ? { ...friend, followed: !friend.followed }
                 : friend
             )
 
@@ -27,6 +18,10 @@ const friendsReducer = (state = initialState, action) => {
                 ...state,
                 friends: newFriends,
             }
+            console.log('возвращаем новый стейт');
+        }
+        case SET_FRIENDS: {
+            return { ...state, friends: [...state.friends, ...action.payload.friends], }
         }
 
         default:
@@ -34,6 +29,11 @@ const friendsReducer = (state = initialState, action) => {
     }
 };
 
-export const toogleFollowingAC = (id) => ({ type: TOOGLE_FOLLOWING, payload: { id, } })
+export const toogleFollowingAC = (id) => {
+    console.log('вызвался AC')
+    return ({ type: TOOGLE_FOLLOWING, payload: { id, } })
+}
+export const setFriendsAC = (friends) => ({ type: SET_FRIENDS, payload: { friends } })
+
 
 export default friendsReducer;
