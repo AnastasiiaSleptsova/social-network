@@ -4,30 +4,38 @@ import MessageItem from './MessageItem/MessageItem';
 import classes from './Messages.module.css'
 
 const Messages = () => {
+
+    let dialogsData = [
+        { id: 1, name: "Andrey " },
+        { id: 2, name: "Dima " },
+        { id: 3, name: "Alex " },
+        { id: 4, name: "Anastasiia" },
+        { id: 5, name: "Jake " },
+        { id: 6, name: "Molly " },
+        { id: 7, name: "Arianna " },
+        { id: 8, name: "Avery " },
+        { id: 9, name: "Gabriella " },
+        { id: 10, name: "User not found " }
+    ]
+    let dialogs = dialogsData.map(dialogs => <DialogList dialogName={dialogs.name} id={dialogs.id} />);
+
+    let messageList = [
+        { message: 'Hello', name: 'Me' },
+        { message: 'Hi!', name: 'Anastasiia' },
+        { message: 'How are you?', name: 'Me' },
+        { message: 'I\'m fine! What about you?', name: 'Anastasiia' },
+        { message: 'I\'m fine too, thanks.', name: 'Me' }
+    ]
+    let messages = messageList.map(messages => <MessageItem message={messages.message} name={messages.name} />);
+
     return (
         <div className={classes.messageWrapper}>
             <ul className={classes.dialogList}>
                 <dl className={classes.title}>DIALOGS</dl>
-                <DialogList dialogName="Andrey "/>
-                <DialogList dialogName="Dima" />
-                <DialogList dialogName="Alex" />
-                <DialogList dialogName="Anastasiia" />
-                <DialogList dialogName="Jake" />
-                <DialogList dialogName="Molly" />
-                <DialogList dialogName="Arianna" />
-                <DialogList dialogName="Avery" />
-                <DialogList dialogName="Gabriella" />
-                <DialogList dialogName="User not found" />
+                {dialogs}
             </ul>
             <ul className={classes.messageList}>
-                <MessageItem message='Hello' name='Anastasiia' />
-                <MessageItem message='Hi!' name='Me' />
-                <MessageItem message='How are you?' name='Anastasiia' />
-                <MessageItem message='I am fine! What about you?' name='Me' />
-                <MessageItem message='I am fine too, thanks.Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis cupiditate nemo quaerat, praesentium ipsa similique quo ab, quibusdam non sapiente eius asperiores recusandae soluta! Repudiandae nisi omnis voluptatum, architecto recusandae consequuntur natus eaque unde culpa quos sit ut, hic sapiente cum obcaecati perferendis delectus nihil magni facere quod odit. Corporis enim illum dolorum unde nostrum eum, architecto atque placeat, natus libero error voluptas tempore itaque. Iste dolores officiis dignissimos nostrum voluptatibus qui esse architecto corrupti expedita facilis libero eius similique, nisi impedit? Facilis dolore aliquid corrupti ipsam iusto? Placeat, facilis aliquam recusandae, velit cupiditate inventore quasi architecto libero impedit quisquam eligendi, assumenda rerum iure corrupti ipsa reprehenderit saepe provident vero est sunt sit nisi eum iusto exercitationem! Neque quidem nostrum impedit, debitis obcaecati ab, placeat nihil non veniam quis iste ut numquam architecto cupiditate, natus ducimus perferendis incidunt eveniet dolor? A explicabo suscipit hic? Asperiores ipsa rem doloremque necessitatibus magni commodi ullam eveniet eos, distinctio repudiandae iusto dolorum maxime quod odit quibusdam! Temporibus ex sapiente labore vel quibusdam ipsum eius! In consectetur iure nesciunt, voluptatem odio ipsam pariatur non. Eligendi repellat architecto officia laudantium harum itaque labore culpa fugit quidem fuga. Blanditiis eaque non voluptatibus odio, necessitatibus fugit voluptate vero.
-' name='Anastasiia' />
-
-
+                {messages}
             </ul>
         </div>
     )
