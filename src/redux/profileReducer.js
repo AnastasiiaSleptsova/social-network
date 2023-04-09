@@ -1,5 +1,28 @@
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const SET_FRIENDS_PROFILE = 'SET_FRIENDS_PROFILE';
+
+// aboutMe
+// : 
+// null
+// contacts
+// : 
+// {facebook: null, website: null, vk: null, twitter: null, instagram: null, youtube: null, github: null,…}
+// fullName
+// : 
+// "nelli04"
+// lookingForAJob
+// : 
+// false
+// lookingForAJobDescription
+// : 
+// null
+// photos
+// : 
+// {small: null, large: null}
+// userId
+// : 
+// 28433
 
 const initialState = {
     postList: [
@@ -7,6 +30,7 @@ const initialState = {
         { id: 2, text: 'Hello, it\'s me', like: '3' }
     ],
     newPostText: '',
+    profile: {},
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -17,14 +41,6 @@ const profileReducer = (state = initialState, action) => {
                 text: state.newPostText,
                 like: '0'
             }
-            // const stateCopy = {
-            //     ...state,
-            //     postList: [...state.postList],
-            // };
-            // stateCopy.postList.push(newPost);
-            // stateCopy.newPostText = '';
-            // return stateCopy;
-
             return {
                 ...state,
                 postList: [...state.postList, newPost],
@@ -32,9 +48,11 @@ const profileReducer = (state = initialState, action) => {
             }
         }
         case UPDATE_NEW_POST_TEXT: {
-            const stateCopy = { ...state };
-            stateCopy.newPostText = action.newText;
-            return stateCopy;
+            return { ...state, newPostText: action.payload.text }
+        }
+        case SET_FRIENDS_PROFILE: {
+            console.log('!!! сейчас положим в редакс этот профиль', action.payload.profile);
+            return { ...state, profile: action.payload.profile }
         }
         default:
             return state;
@@ -43,8 +61,8 @@ const profileReducer = (state = initialState, action) => {
 };
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostActionCreator = (text) =>
-    ({ type: UPDATE_NEW_POST_TEXT, newText: text, });
+export const updateNewPostActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, payload: { text } });
+export const setFriendProfile = (profile) => ({ type: SET_FRIENDS_PROFILE, payload: { profile } });
 
 
 export default profileReducer;

@@ -2,13 +2,12 @@ import './App.css';
 import React from 'react';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
-import Profile from './Components/Profile/Profile';
 import Navbar from './Components/Navbar/Navbar';
 import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Frends from './Components/Friends/Friends';
+import ProfileContainer from './Components/Profile/ProfileContainer';
 import MessagesContainer from './Components/Messages/MessagesContainer';
 import FrendsContainer from './Components/Friends/FriendsContainer';
 
@@ -27,9 +26,9 @@ const App = (props) => {
           <Navbar />
           <Routes>
             <Route
-              path='/Profile'
+              path='/Profile/:friendId?'
               element={(
-                <Profile />
+                <ProfileContainer />
               )}
             />
             <Route

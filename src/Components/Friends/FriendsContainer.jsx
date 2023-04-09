@@ -7,25 +7,27 @@ import {
     setTotalFriendsCount,
     fetchMoreFriends,
     toggleIsFetching,
+    clearFriends,
 } from '../../redux/frendsReducer';
 import axios from 'axios';
 import Friends from './Friends';
-import Preloader from '../Preloader/Preloader';
 
 
-class FriendsContsiner extends React.Component {
+
+class FriendsContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(resp => {
-                setTimeout(() => {
-                    console.log('!!! 2 sec')
-                    this.props.toggleIsFetching(false);
-                    this.props.setFriends(resp.data.items);
-                    this.props.setTotalFriendsCount(resp.data.totalCount);
-                }, 2000)
+                this.props.toggleIsFetching(false);
+                this.props.setFriends(resp.data.items);
+                this.props.setTotalFriendsCount(resp.data.totalCount);
             })
+    }
+    componentWillUnmount() {
+        this.props.clearFriends()
+        this.props.setTotalFriendsCount(0)
     }
 
     fetchMoreFriends() {
@@ -64,13 +66,12 @@ const mapStateToProps = (state) => {
     }
 }
 
-const FrendsContainer = connect(mapStateToProps, {
+export default connect(mapStateToProps, {
     toogleFollowing,
     setFriends,
     incrementCurrentPage,
     setTotalFriendsCount,
     fetchMoreFriends,
     toggleIsFetching,
-})(FriendsContsiner);
-
-export default FrendsContainer;
+    clearFriends,
+})(FriendsContainer);;

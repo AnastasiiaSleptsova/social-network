@@ -1,12 +1,21 @@
 import classes from './Friends.module.css'
 import React from 'react';
 import AvatarPlug from '../../img/avatar1.webp';
+import { Link, } from 'react-router-dom';
+
 
 const FriendsItem = ({ friend, toogleFollowing, forwardRef }) => {
+
     const correctSrc = friend.photos.small || AvatarPlug;
     return (
         <div className={classes.frend} ref={forwardRef}>
-            <img className={classes.avatar} src={correctSrc} />
+            <Link
+                to={{
+                    pathname: `/Profile/${friend.id}`,
+                }}
+            >
+                <img className={classes.avatar} src={correctSrc} />
+            </Link>
             <div className={classes.data}>
                 <div className={classes.name}>{friend.name}</div>
                 <button className={classes.writeMessage}>Написать сообщение</button>

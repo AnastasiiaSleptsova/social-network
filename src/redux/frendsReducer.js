@@ -4,10 +4,11 @@ const SET_TOTAL_FRIENDS_COUNT = 'SET_TOTAL_FRIENDS_COUNT'
 const FETCH_MORE_FRIENDS = 'FETCH_MORE_FRIENDS'
 const INCREMENT_CURRENT_PAGE = 'INCREMENT_CURRENT_PAGE'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
+const CLEAR_FRIENDS = 'CLEAR_FRIENDS'
 
 const initialState = {
     friends: [],
-    pageSize: 10,
+    pageSize: 7,
     totalFriendsCount: 0,
     currentPage: 1,
     isFetching: false,
@@ -28,6 +29,10 @@ const friendsReducer = (state = initialState, action) => {
         }
         case SET_FRIENDS: {
             return { ...state, friends: [...state.friends, ...action.payload.friends], }
+        }
+
+        case CLEAR_FRIENDS: {
+            return { ...state, friends: [] }
         }
 
         case INCREMENT_CURRENT_PAGE: {
@@ -52,12 +57,14 @@ export const toogleFollowing = (id) => ({ type: TOOGLE_FOLLOWING, payload: { id,
 
 export const setFriends = (friends) => ({ type: SET_FRIENDS, payload: { friends } })
 
+export const clearFriends = () => ({ type: CLEAR_FRIENDS })
+
 export const incrementCurrentPage = () => ({ type: INCREMENT_CURRENT_PAGE })
 
 export const setTotalFriendsCount = (totalCount) => ({ type: SET_TOTAL_FRIENDS_COUNT, payload: { totalCount } })
 
 export const fetchMoreFriends = () => ({ type: FETCH_MORE_FRIENDS })
 
-export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, payload: {isFetching} })
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, payload: { isFetching } })
 
 export default friendsReducer;
