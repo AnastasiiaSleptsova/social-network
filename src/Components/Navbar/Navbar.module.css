@@ -1,0 +1,23 @@
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: #1C3F3A;
+    height: 100%;
+  }
+  
+  .item {
+    color: #ECE8D9;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    border: 1px solid #1C3F3A;
+    /* transition: all .3s; */
+  }
+  
+  .item:hover {
+    border: 1px solid black;
+  }
+
+  .active{
+    color: gold;
+  } 
