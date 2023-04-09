@@ -17,7 +17,7 @@ const Messages = () => {
         { id: 9, name: "Gabriella " },
         { id: 10, name: "User not found " }
     ]
-    let dialogs = dialogsData.map(dialogs => <DialogList dialogName={dialogs.name} id={dialogs.id} />);
+    let dialogs = dialogsData.map (dialogs => <DialogList dialogName={dialogs.name} id={dialogs.id} />);
 
     let messageList = [
         { message: 'Hello', name: 'Me' },
