@@ -18,6 +18,7 @@ const NotFountPage = () => {
 }
 
 const App = (props) => {
+  console.log('!!! props from APP=', props)
   return (
     <BrowserRouter>
       <div className='app_wrapper'>
