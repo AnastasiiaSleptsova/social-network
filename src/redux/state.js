@@ -9,7 +9,8 @@ const state = {
         postList: [
             { id: 1, text: 'Hi! Who is here?', like: '5' },
             { id: 2, text: 'Hello, it\'s me', like: '3' }
-        ]
+        ],
+        newPostText: '',
     },
     messagesPage: {
         dialogsData: [
@@ -22,47 +23,61 @@ const state = {
             { id: 7, name: "Arianna " },
             { id: 8, name: "Avery " },
             { id: 9, name: "Gabriella " },
-            { id: 10, name: "User not found " }
+            { id: 10, name: "User not found " },
         ],
         messageList: [
             { id: 1, message: 'Hello', name: 'Me' },
             { id: 2, message: 'Hi!', name: 'Anastasiia' },
             { id: 3, message: 'How are you?', name: 'Me' },
             { id: 4, message: 'I\'m fine! What about you?', name: 'Anastasiia' },
-            { id: 5, message: 'I\'m fine too, thanks.', name: 'Me' }
-        ]
+            { id: 5, message: 'I\'m fine too, thanks.', name: 'Me' },
+        ],
+        newMessageText: '',
     },
     navbarPage: {
         avatarList: [
             { avatarka: avatar1, altAvatar: 'Avatar1' },
             { avatarka: avatar2, altAvatar: 'Avatar2' },
             { avatarka: avatar3, altAvatar: 'Avatar3' },
-            { avatarka: avatar1, altAvatar: 'Avatar1' }
-        ]
+            { avatarka: avatar1, altAvatar: 'Avatar1' },
+        ],
     }
 }
 
-export const addPost = (postMessage) => {
+window.state = state;
+
+export const addPost = () => {
     const newPost = {
         id: state.profilePage.postList.length + 1,
-        text: postMessage,
+        text: state.profilePage.newPostText,
         like: '0'
     }
     state.profilePage.postList.push(newPost);
-    rerenderEntireTree()
+    state.profilePage.newPostText = '';
+    rerenderEntireTree();
 }
 
-export const addMessage = (messageText) => {
-    if (messageText) {
+export const addMessage = () => {
+    if (state.messagesPage.newMessageText) {
         const newMessage = {
             id: state.messagesPage.messageList.length + 1,
-            message: messageText,
+            message: state.messagesPage.newMessageText,
             name: 'Me'
         }
         state.messagesPage.messageList.push(newMessage);
+        state.messagesPage.newMessageText = '';
         rerenderEntireTree()
     }
 }
 
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+}
+
+export const updateNewMessageText = (newMessage) => {
+    state.messagesPage.newMessageText = newMessage;
+    rerenderEntireTree(state);
+}
 
 export default state;
