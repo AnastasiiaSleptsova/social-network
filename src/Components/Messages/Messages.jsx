@@ -14,13 +14,13 @@ const Messages = (props) => {
 
     const onClickHandler = () => {
         let text = newPastElement.current.value;
-        props.addMessage(text);
+        props.dispatch({ type: 'ADD_MESSAGE' });
         newPastElement.current.value = ""
     }
 
     const onMessageChange = () => {
         const text = newPastElement.current.value;
-        props.updateNewMessageText(text);
+        props.dispatch({ type: 'UPDATE_NEW_MESSAGE_TEXT', newMessage: text });
     }
 
     return (

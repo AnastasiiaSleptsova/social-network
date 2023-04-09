@@ -43,16 +43,19 @@ const store = {
         }
     },
 
-    getState() {
-        return this._state;
-    },
-
     _callSubscriber() {
         console.log("!!! state changed");
     },
 
-    addPost() {
-        console.log('!!! вызвали addPost');
+    getState() {
+        return this._state;
+    },
+
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
+
+    _addPost() {
         const newPost = {
             id: this._state.profilePage.postList.length + 1,
             text: this._state.profilePage.newPostText,
@@ -63,7 +66,7 @@ const store = {
         this._callSubscriber(this._state);
     },
 
-    addMessage() {
+    _addMessage() {
         if (this._state.messagesPage.newMessageText) {
             const newMessage = {
                 id: this._state.messagesPage.messageList.length + 1,
@@ -76,19 +79,32 @@ const store = {
         }
     },
 
-    updateNewPostText(newText) {
+    _updateNewPostText(newText) {
         this._state.profilePage.newPostText = newText;
         this._callSubscriber(this._state);
     },
 
-    updateNewMessageText(newMessage) {
+    _updateNewMessageText(newMessage) {
         this._state.messagesPage.newMessageText = newMessage;
         this._callSubscriber(this._state);
     },
 
-    subscribe(observer) {
-        this._callSubscriber = observer;
-    },
+    dispatch(action) {
+        // if (action.type === 'ADD_POST') {
+        //     this._addPost();
+        // } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+        //     this._updateNewPostText(action.newText);
+        // } else if (action.type === 'ADD_MESSAGE') {
+
+        // }
+
+        switch (action.type) {
+            case 'ADD_POST': this._addPost(); break
+            case 'UPDATE_NEW_POST_TEXT': this._updateNewPostText(action.newText); break
+            case 'ADD_MESSAGE': this._addMessage(); break
+            case 'UPDATE_NEW_MESSAGE_TEXT': this._updateNewMessageText(action.newMessage); break
+        }
+    }
 }
 
 
