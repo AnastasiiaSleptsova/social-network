@@ -1,8 +1,10 @@
-import { rerenderEntireTree } from './render';
 import avatar1 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar1.webp'
 import avatar2 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar2.jpg';
 import avatar3 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar3.jpg';
 
+let rerenderEntireTree = () => {
+    console.log("state changed");
+}
 
 const state = {
     profilePage: {
@@ -78,6 +80,10 @@ export const updateNewPostText = (newText) => {
 export const updateNewMessageText = (newMessage) => {
     state.messagesPage.newMessageText = newMessage;
     rerenderEntireTree(state);
+}
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
 }
 
 export default state;
