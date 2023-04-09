@@ -1,6 +1,5 @@
-import classes from './Profile.module.css'
-import MyPosts from './MyPosts/MyPosts';
 import PersonalInfo from './ PersonalInfo/PersonalInfo';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 
 const Profile = (props) => {
@@ -8,7 +7,7 @@ const Profile = (props) => {
   return (
     <div>
       <PersonalInfo />
-      <MyPosts
+      <MyPostsContainer
         postList={props.profilePage.postList}
         newPostText={props.profilePage.newPostText}
         dispatch={props.dispatch}
