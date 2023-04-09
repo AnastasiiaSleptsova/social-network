@@ -8,8 +8,9 @@ import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Frends from './Components/Frends/Frends';
+import Frends from './Components/Friends/Friends';
 import MessagesContainer from './Components/Messages/MessagesContainer';
+import FrendsContainer from './Components/Friends/FriendsContainer';
 
 const NotFountPage = () => {
   return (
@@ -40,7 +41,7 @@ const App = (props) => {
             <Route path='/News' element={<News />} />
             <Route path='/Music' element={<Music />} />
             <Route path='/Settings' element={<Settings />} />
-            <Route path='/Frends' element={<Frends />} />
+            <Route path='/Frends' element={<FrendsContainer />} />
             <Route path='*' element={<NotFountPage />} />
           </Routes>
         </main>
