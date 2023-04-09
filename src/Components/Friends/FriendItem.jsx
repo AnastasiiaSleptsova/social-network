@@ -2,10 +2,10 @@ import classes from './Friends.module.css'
 import React from 'react';
 import AvatarPlug from '../../img/avatar1.webp';
 
-const FriendsItem = ({ friend, toogleFollowing }) => {
+const FriendsItem = ({ friend, toogleFollowing, forwardRef }) => {
     const correctSrc = friend.photos.small || AvatarPlug;
     return (
-        <div className={classes.frend}>
+        <div className={classes.frend} ref={forwardRef}>
             <img className={classes.avatar} src={correctSrc} />
             <div className={classes.data}>
                 <div className={classes.name}>{friend.name}</div>
@@ -14,7 +14,6 @@ const FriendsItem = ({ friend, toogleFollowing }) => {
                     className={classes.dropdown}
                     onClick={() => {
                         toogleFollowing(friend.id)
-                        console.log('по клику toogleFollowing',)
                     }}
                 >
                     {friend.followed ? 'Unfollow' : 'Follow'}
