@@ -3,7 +3,7 @@ import avatar2 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-firs
 import avatar3 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar3.jpg';
 
 
-let state = {
+const state = {
     profilePage: {
         postText: [
             { text: 'Hi! Who is here?', like: '5' },
@@ -35,9 +35,17 @@ let state = {
         avatarList: [
             { avatarka: avatar1, altAvatar: 'Avatar1' },
             { avatarka: avatar2, altAvatar: 'Avatar2' },
-            { avatarka: avatar3, altAvatar: 'Avatar3' }
+            { avatarka: avatar3, altAvatar: 'Avatar3' },
+            { avatarka: avatar1, altAvatar: 'Avatar1' }
         ]
     }
 }
 
+export const addPost = (postMessage) => {
+    const newPost = {
+        text: postMessage,
+        like: '0'
+    }
+    state.profilePage.posts.push();
+}
 export default state;
