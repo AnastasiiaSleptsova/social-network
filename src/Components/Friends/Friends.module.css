@@ -1,9 +1,9 @@
-.frendList {
+.friendList {
     display: flex;
     flex-direction: column;
 }
 
-.frend {
+.friend {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid grey;
@@ -50,4 +50,19 @@
 
 .selectedPage {
     font-weight: bold;
+}
+
+.allUsers {
+    display: flex;
+
+}
+
+.friends {
+    flex-grow: 2;
+}
+
+.users {
+    flex-grow: 1;
+    text-align: center;
+    background-color: rgb(194, 193, 193);
 }
