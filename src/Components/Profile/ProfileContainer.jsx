@@ -17,7 +17,6 @@ class ProfileContainer extends React.Component {
         const friendId = this.props.router.params.friendId;
         axios.get(`https://social-network.samuraijs.com/api/1.0//profile/` + friendId)
             .then(resp => {
-                console.log('!!! resp =', resp);
                 this.props.setFriendProfile(resp.data);
             });
     }

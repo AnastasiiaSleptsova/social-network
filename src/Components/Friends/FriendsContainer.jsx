@@ -2,16 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
     toogleFollowing,
-    setFriends,
-    incrementCurrentPage,
-    setTotalFriendsCount,
     fetchMoreFriends,
-    toggleIsFetching,
     clearFriends,
     toggleFollowingProgress,
+    getUsers,
+    getUsersMore,
+    setTotalFriendsCount,
 } from '../../redux/frendsReducer';
 import Friends from './Friends';
-import { usersAPI } from '../../api/api';
+
 
 
 
@@ -19,13 +18,7 @@ import { usersAPI } from '../../api/api';
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setFriends(data.items);
-            this.props.setTotalFriendsCount(data.totalCount);
-        })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
     componentWillUnmount() {
         this.props.clearFriends()
@@ -33,13 +26,7 @@ class FriendsContainer extends React.Component {
     }
 
     fetchMoreFriends() {
-        this.props.toggleIsFetching(true);
-        this.props.incrementCurrentPage()
-
-        usersAPI.getUsersMore(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setFriends(data.items);
-        })
+        this.props.getUsersMore(this.props.currentPage, this.props.pageSize);
     }
 
     render() {
@@ -72,11 +59,10 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
     toogleFollowing,
-    setFriends,
-    incrementCurrentPage,
     setTotalFriendsCount,
     fetchMoreFriends,
-    toggleIsFetching,
     clearFriends,
     toggleFollowingProgress,
+    getUsers,
+    getUsersMore,
 })(FriendsContainer);;
