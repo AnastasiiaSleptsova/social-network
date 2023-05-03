@@ -3,9 +3,9 @@ import DialogList from './DialogList/DialogList';
 import MessageItem from './MessageItem/MessageItem';
 import classes from './Messages.module.css'
 import React from 'react';
-import {Navigate} from 'react-router-dom';
 
-const Messages = ({ messagesPage, addNewMessage, onMessageInputChange, isAuth }) => {
+
+const Messages = ({ messagesPage, addNewMessage, onMessageInputChange }) => {
     const dialogs = messagesPage.dialogsData.map(dialogs => <DialogList dialogName={dialogs.name} key={dialogs.id} id={dialogs.id} />);
 
     const messages = messagesPage.messageList.map(messages => <MessageItem message={messages.message} key={messages.id} name={messages.name} />);
@@ -18,8 +18,6 @@ const Messages = ({ messagesPage, addNewMessage, onMessageInputChange, isAuth })
     }
 
     const onClickHandler = () => newPastElement.current.value && addNewMessage()
-
-    if (!isAuth) return <Navigate to='/Login' />;
 
     return (
         <div>

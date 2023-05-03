@@ -6,8 +6,8 @@ import {
     useLocation,
     useNavigate,
     useParams,
-    Navigate,
 } from "react-router-dom";
+import withAuthNavigate from '../HOC/withAuthNavigate';
 
 
 
@@ -20,8 +20,6 @@ class ProfileContainer extends React.Component {
 
 
     render() {
-        if (!this.props.isAuth) return <Navigate to='/Login' />;
-
         return (
             <>
                 <Profile {...this.props} />
@@ -30,11 +28,11 @@ class ProfileContainer extends React.Component {
     }
 }
 
+const AuthNavigateComponent = withAuthNavigate(ProfileContainer)
+
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth
 });
-
 
 const withRouter = (ClassComponent) => {
     const ComponentOlegFC = (props) => {
@@ -52,4 +50,4 @@ const withRouter = (ClassComponent) => {
     return ComponentOlegFC
 }
 
-export default connect(mapStateToProps, { getFriendProfile })(withRouter(ProfileContainer));
+export default connect(mapStateToProps, { getFriendProfile })(withRouter(AuthNavigateComponent));
