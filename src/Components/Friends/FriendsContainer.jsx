@@ -10,11 +10,8 @@ import {
     setTotalFriendsCount,
 } from '../../redux/frendsReducer';
 import Friends from './Friends';
-
-
-
-
-
+import withAuthNavigate from '../HOC/withAuthNavigate';
+import { compose } from 'redux';
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
@@ -57,12 +54,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {
-    toogleFollowing,
-    setTotalFriendsCount,
-    fetchMoreFriends,
-    clearFriends,
-    toggleFollowingProgress,
-    getUsers,
-    getUsersMore,
-})(FriendsContainer);;
+export default compose(
+    withAuthNavigate,
+    connect(mapStateToProps, {
+        toogleFollowing, setTotalFriendsCount, fetchMoreFriends, clearFriends,
+        toggleFollowingProgress, getUsers, getUsersMore,
+    })
+)(FriendsContainer)

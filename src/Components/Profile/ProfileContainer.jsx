@@ -8,8 +8,7 @@ import {
     useParams,
 } from "react-router-dom";
 import withAuthNavigate from '../HOC/withAuthNavigate';
-
-
+import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
 
@@ -28,14 +27,12 @@ class ProfileContainer extends React.Component {
     }
 }
 
-const AuthNavigateComponent = withAuthNavigate(ProfileContainer)
-
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
 });
 
 const withRouter = (ClassComponent) => {
-    const ComponentOlegFC = (props) => {
+    const RouterComponent = (props) => {
         const location = useLocation();
         const navigate = useNavigate();
         const params = useParams();
@@ -47,7 +44,11 @@ const withRouter = (ClassComponent) => {
         )
     }
 
-    return ComponentOlegFC
+    return RouterComponent
 }
 
-export default connect(mapStateToProps, { getFriendProfile })(withRouter(AuthNavigateComponent));
+export default compose(
+    connect(mapStateToProps, { getFriendProfile }),
+    withRouter,
+    withAuthNavigate
+)(ProfileContainer)
