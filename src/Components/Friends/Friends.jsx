@@ -22,7 +22,7 @@ const Friends = (props) => {
                 </div>
                 <div className={classes.users}>
                     <span>Возможно, вы знакомы?</span>
-                    </div>
+                </div>
             </div>
             <button
                 className={classes.button}

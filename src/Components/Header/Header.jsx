@@ -8,7 +8,7 @@ const Header = (props) => {
     <div className={classes.loginBlock}>
       {props.isAuth
         ? props.login
-        : <NavLink className={classes.text} to={'/login'}>Login </NavLink>}
+        : <NavLink className={classes.text} to={'/Login'}>Login </NavLink>}
     </div>
   </header>
 }

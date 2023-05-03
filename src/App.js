@@ -10,6 +10,7 @@ import ProfileContainer from './Components/Profile/ProfileContainer';
 import MessagesContainer from './Components/Messages/MessagesContainer';
 import FrendsContainer from './Components/Friends/FriendsContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
+import Login from './Components/Login/Login';
 
 const NotFountPage = () => {
   return (
@@ -41,6 +42,7 @@ const App = (props) => {
             <Route path='/Music' element={<Music />} />
             <Route path='/Settings' element={<Settings />} />
             <Route path='/Frends' element={<FrendsContainer />} />
+            <Route path='/Login' element={<Login />} />
             <Route path='*' element={<NotFountPage />} />
           </Routes>
         </main>

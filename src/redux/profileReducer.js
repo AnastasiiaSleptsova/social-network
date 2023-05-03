@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api"
+
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_FRIENDS_PROFILE = 'SET_FRIENDS_PROFILE';
@@ -30,7 +32,6 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, newPostText: action.payload.text }
         }
         case SET_FRIENDS_PROFILE: {
-            console.log('!!! сейчас положим в редакс этот профиль', action.payload.profile);
             return { ...state, profile: action.payload.profile }
         }
         default:
@@ -43,6 +44,13 @@ export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, payload: { text } });
 export const setFriendProfile = (profile) => ({ type: SET_FRIENDS_PROFILE, payload: { profile } });
 
+export const getFriendProfile = (friendId) => {
+    return (dispatch) => {
+        usersAPI.getProfileFrend(friendId).then(resp => {
+            dispatch(setFriendProfile(resp));
+        });
+    }
+}
 
 export default profileReducer;
 

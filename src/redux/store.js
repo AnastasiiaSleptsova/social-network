@@ -47,7 +47,6 @@ const store = {
     },
 
     _callSubscriber() {
-        console.log("!!! state changed");
     },
 
     getState() {
