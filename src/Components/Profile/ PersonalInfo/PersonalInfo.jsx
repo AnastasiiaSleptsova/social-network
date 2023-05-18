@@ -22,7 +22,7 @@ const PersonalInfo = (props) => {
         <img className={classes.photo} src={correctSrc} alt='avatar' />
         <div className={classes.text}>
           <h2 className={classes.name}>{props.profile.fullName}</h2>
-          <ProfileStatus status={'Hello'}/>
+          <ProfileStatus status={props.status} updateProfileStatus={props.updateProfileStatus}/>
           <div className={classes.info}>
             {props.profile.aboutMe}
             <br />

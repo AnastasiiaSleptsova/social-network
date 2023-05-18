@@ -1,9 +1,9 @@
-import { usersAPI } from "../api/api"
+import { profileAPI } from "../api/api"
 
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_FRIENDS_PROFILE = 'SET_FRIENDS_PROFILE';
-
+const SET_STATUS = 'SET_STATUS';
 
 const initialState = {
     postList: [
@@ -12,6 +12,7 @@ const initialState = {
     ],
     newPostText: '',
     profile: {},
+    status: '',
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -34,6 +35,9 @@ const profileReducer = (state = initialState, action) => {
         case SET_FRIENDS_PROFILE: {
             return { ...state, profile: action.payload.profile }
         }
+        case SET_STATUS: {
+            return { ...state, profile: action.payload.status }
+        }
         default:
             return state;
     }
@@ -43,14 +47,33 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, payload: { text } });
 export const setFriendProfile = (profile) => ({ type: SET_FRIENDS_PROFILE, payload: { profile } });
+export const setStatus = (status) => ({ type: SET_STATUS, payload: { status } });
+
 
 export const getFriendProfile = (friendId) => {
     return (dispatch) => {
-        usersAPI.getProfileFrend(friendId).then(resp => {
-            dispatch(setFriendProfile(resp));
+        profileAPI.getProfileFrend(friendId).then(resp => {
+            dispatch(setStatus(resp));
         });
     }
 }
-
+export const getProfileStatus = (friendId) => {
+    return (dispatch) => {
+        profileAPI.getProfileStatus(friendId).then(resp => {
+            console.log('!!! resp =', resp);
+            dispatch(setStatus(resp));
+        });
+    }
+}
+export const updateProfileStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.updateProfileStatus(status).then(resp => {
+            console.log('!!! resp =', resp);
+            if (resp.data.resultCode === 0) {
+                dispatch(setStatus(status));
+            }
+        });
+    }
+}
 export default profileReducer;
 

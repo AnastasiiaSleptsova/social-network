@@ -57,12 +57,3 @@
 
 }
 
-.friends {
-    flex-grow: 2;
-}
-
-.users {
-    flex-grow: 1;
-    text-align: center;
-    background-color: rgb(194, 193, 193);
-}

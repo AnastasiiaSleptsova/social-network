@@ -35,11 +35,20 @@ export const usersAPI = {
                 return resp.data;
             });
     },
-    getProfileFrend(friendId) {
+}
+
+export const profileAPI = {
+   getProfileFrend(friendId) {
         return instance.get(`profile/` + friendId)
             .then(resp => {
                 return resp.data;
             });
+    },
+    getProfileStatus(friendId) {
+        return instance.get(`profile/status/` + friendId)
+    },
+    updateProfileStatus(status) {
+        return instance.put(`profile/status/`, {status: status}) 
     },
 }
 

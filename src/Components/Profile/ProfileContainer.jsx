@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getFriendProfile } from '../../redux/profileReducer';
+import {
+    getFriendProfile,
+    getProfileStatus,
+    updateProfileStatus,
+} from '../../redux/profileReducer';
 import Profile from './Profile';
 import {
     useLocation,
@@ -13,15 +17,23 @@ import { compose } from 'redux';
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        const friendId = this.props.router.params.friendId;
-        this.props.getFriendProfile(friendId)
+        let friendId = this.props.router.params.friendId;
+        if (!friendId) {
+            friendId = 28941;
+        };
+        this.props.getFriendProfile(friendId);
+        this.props.getProfileStatus(friendId);
     }
 
 
     render() {
         return (
             <>
-                <Profile {...this.props} />
+                <Profile
+                    {...this.props}
+                    profile={this.props.profile}
+                    status={this.props.status}
+                    updateProfileStatus={this.props.updateProfileStatus} />
             </>
         )
     }
@@ -29,6 +41,7 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
+    status: state.profilePage.status,
 });
 
 const withRouter = (ClassComponent) => {
@@ -48,7 +61,7 @@ const withRouter = (ClassComponent) => {
 }
 
 export default compose(
-    connect(mapStateToProps, { getFriendProfile }),
+    connect(mapStateToProps, { getFriendProfile, getProfileStatus, updateProfileStatus, }),
     withRouter,
     withAuthNavigate
 )(ProfileContainer)
