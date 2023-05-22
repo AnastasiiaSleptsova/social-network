@@ -36,12 +36,12 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, profile: action.payload.profile }
         }
         case SET_STATUS: {
-            return { ...state, profile: action.payload.status }
+            return { ...state, profile: { ...state.profile, status: action.payload.status } }
         }
         default:
             return state;
     }
-
+    
 };
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
@@ -53,27 +53,26 @@ export const setStatus = (status) => ({ type: SET_STATUS, payload: { status } })
 export const getFriendProfile = (friendId) => {
     return (dispatch) => {
         profileAPI.getProfileFrend(friendId).then(resp => {
-            dispatch(setStatus(resp));
+            dispatch(setFriendProfile(resp));
         });
     }
 }
 export const getProfileStatus = (friendId) => {
     return (dispatch) => {
         profileAPI.getProfileStatus(friendId).then(resp => {
-            console.log('!!! resp =', resp);
-            dispatch(setStatus(resp));
+            dispatch(setStatus(resp.data));
         });
     }
 }
 export const updateProfileStatus = (status) => {
     return (dispatch) => {
         profileAPI.updateProfileStatus(status).then(resp => {
-            console.log('!!! resp =', resp);
             if (resp.data.resultCode === 0) {
                 dispatch(setStatus(status));
             }
         });
     }
 }
+
 export default profileReducer;
 

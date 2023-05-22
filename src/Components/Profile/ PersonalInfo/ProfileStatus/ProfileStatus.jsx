@@ -13,6 +13,16 @@ class ProfileStatus extends React.Component {
     })
   }
 
+  doubleClickHandler = () => {
+    const userId = 28941
+    const profileId = this.props.profileId;
+    const canEditStatus = userId === profileId
+    // const canEditStatus = false
+    if (canEditStatus) {
+      this.activateEditMode()
+    } 
+  }
+
   deactivateEditMode = () => {
     this.setState({
       editMode: false
@@ -26,12 +36,21 @@ class ProfileStatus extends React.Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.status != this.props.status) {
+      this.setState({
+        status: this.props.status
+      });
+    }
+
+  }
+
   render() {
     return (
       <div>
         {!this.state.editMode &&
           <div>
-            <span className={classes.status} onDoubleClick={this.activateEditMode}>{this.props.status}</span>
+            <span className={classes.status} onDoubleClick={this.doubleClickHandler}>{this.props.status || 'Status does not specified'}</span>
           </div>
         }
         {this.state.editMode &&

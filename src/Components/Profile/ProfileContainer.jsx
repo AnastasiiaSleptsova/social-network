@@ -11,7 +11,6 @@ import {
     useNavigate,
     useParams,
 } from "react-router-dom";
-import withAuthNavigate from '../HOC/withAuthNavigate';
 import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
@@ -29,11 +28,7 @@ class ProfileContainer extends React.Component {
     render() {
         return (
             <>
-                <Profile
-                    {...this.props}
-                    profile={this.props.profile}
-                    status={this.props.status}
-                    updateProfileStatus={this.props.updateProfileStatus} />
+                <Profile {...this.props} />
             </>
         )
     }
@@ -41,7 +36,6 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status,
 });
 
 const withRouter = (ClassComponent) => {
@@ -62,6 +56,5 @@ const withRouter = (ClassComponent) => {
 
 export default compose(
     connect(mapStateToProps, { getFriendProfile, getProfileStatus, updateProfileStatus, }),
-    withRouter,
-    withAuthNavigate
+    withRouter
 )(ProfileContainer)

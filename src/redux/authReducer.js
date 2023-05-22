@@ -35,4 +35,5 @@ export const getAuthUserData = () => {
         });
     }
 }
+
 export default authReducer;
