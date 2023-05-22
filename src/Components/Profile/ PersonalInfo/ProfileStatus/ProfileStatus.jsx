@@ -14,10 +14,9 @@ class ProfileStatus extends React.Component {
   }
 
   doubleClickHandler = () => {
-    const userId = 28941
+    const myId = this.props.myId;
     const profileId = this.props.profileId;
-    const canEditStatus = userId === profileId
-    // const canEditStatus = false
+    const canEditStatus = myId === profileId;
     if (canEditStatus) {
       this.activateEditMode()
     } 

@@ -13,7 +13,9 @@ const Profile = (props) => {
       <PersonalInfo
         profile={props.profile}
         status={props.status}
-        updateProfileStatus={props.updateProfileStatus} />
+        updateProfileStatus={props.updateProfileStatus} 
+        myId={props.myId}
+        />
       <MyPostsContainer />
     </div>
   )

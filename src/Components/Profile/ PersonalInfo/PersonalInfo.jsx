@@ -4,7 +4,6 @@ import AvatarPlug from '../../../img/avatar1.webp';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const PersonalInfo = (props) => {
-  console.log('!!! props =', props);
   const correctSrc = props.profile.photos?.small || AvatarPlug;
 
   const jobStatus = props.profile.lookingForAJob
@@ -23,7 +22,9 @@ const PersonalInfo = (props) => {
           <ProfileStatus
             profileId={props.profile.userId}
             status={props.profile.status}
-            updateProfileStatus={props.updateProfileStatus} />
+            updateProfileStatus={props.updateProfileStatus} 
+            myId={props.myId}
+            />
           <div className={classes.info}>
             {props.profile.aboutMe}
             <br />

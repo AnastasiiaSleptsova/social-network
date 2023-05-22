@@ -1,11 +1,31 @@
 .loginPage {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    
+    margin: 0 auto;
 }
 
 .title {
-    padding: 5rem, 5rem;
+    font-size: 3rem;
+}
+
+.loginForm {
+    margin-top: 2rem;
+}
+
+.login {
+    font-size: 1rem;
+}
+
+.password {
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.checkbox {
+    margin-top: 1rem;
+}
+
+.button {
+    margin-top: 1rem;
+    background-color: green;
+    padding: 0.2rem 0.5rem;
+    font-size: 1rem;
 }
