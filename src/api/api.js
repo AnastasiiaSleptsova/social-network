@@ -38,17 +38,17 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-   getProfileFrend(friendId) {
+    getProfileFrend(friendId) {
         return instance.get(`profile/` + friendId)
-            .then(resp => {
+            .then((resp) => {
                 return resp.data;
-            });
+            })
     },
     getProfileStatus(friendId) {
         return instance.get(`profile/status/` + friendId)
     },
     updateProfileStatus(status) {
-        return instance.put(`profile/status/`, {status: status}) 
+        return instance.put(`profile/status/`, { status: status })
     },
 }
 

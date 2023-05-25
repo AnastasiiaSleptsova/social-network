@@ -1,6 +1,5 @@
 import { Field, reduxForm } from 'redux-form'
 import classes from './Login.module.css'
-// import LoginForm from './LoginForm'
 
 const LoginForm = (props) => {
     return <form className={classes.loginForm} onSubmit={props.handleSubmit}>

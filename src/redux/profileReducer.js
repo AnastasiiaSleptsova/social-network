@@ -36,7 +36,9 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, profile: action.payload.profile }
         }
         case SET_STATUS: {
-            return { ...state, profile: { ...state.profile, status: action.payload.status } }
+            console.log('!!! Сейчас засетаем в state вот такой action', action);
+            // return { ...state, profile: { ...state.profile, status: action.payload.status } }
+            return { ...state,  status: action.payload.status }
         }
         default:
             return state;
@@ -59,7 +61,9 @@ export const getFriendProfile = (friendId) => {
 }
 export const getProfileStatus = (friendId) => {
     return (dispatch) => {
+        console.log('!!! Щас отправим запрос на бэк');
         profileAPI.getProfileStatus(friendId).then(resp => {
+            console.log('!!! в ответ вернулось: resp', resp);
             dispatch(setStatus(resp.data));
         });
     }
