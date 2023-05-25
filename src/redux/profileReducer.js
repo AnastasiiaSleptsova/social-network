@@ -1,7 +1,6 @@
 import { profileAPI } from "../api/api"
 
 const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_FRIENDS_PROFILE = 'SET_FRIENDS_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
@@ -10,7 +9,6 @@ const initialState = {
         { id: 1, text: 'Hi! Who is here?', like: '5' },
         { id: 2, text: 'Hello, it\'s me', like: '3' }
     ],
-    newPostText: '',
     profile: {},
     status: '',
 };
@@ -20,7 +18,7 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: {
             const newPost = {
                 id: state.postList.length + 1,
-                text: state.newPostText,
+                text: action.payload.newPostText,
                 like: '0'
             }
             return {
@@ -29,16 +27,11 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: ''
             }
         }
-        case UPDATE_NEW_POST_TEXT: {
-            return { ...state, newPostText: action.payload.text }
-        }
         case SET_FRIENDS_PROFILE: {
             return { ...state, profile: action.payload.profile }
         }
         case SET_STATUS: {
-            console.log('!!! Сейчас засетаем в state вот такой action', action);
-            // return { ...state, profile: { ...state.profile, status: action.payload.status } }
-            return { ...state,  status: action.payload.status }
+            return { ...state,  status: action.payload.status } 
         }
         default:
             return state;
@@ -46,8 +39,7 @@ const profileReducer = (state = initialState, action) => {
     
 };
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, payload: { text } });
+export const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: { newPostText }  });
 export const setFriendProfile = (profile) => ({ type: SET_FRIENDS_PROFILE, payload: { profile } });
 export const setStatus = (status) => ({ type: SET_STATUS, payload: { status } });
 
@@ -61,9 +53,7 @@ export const getFriendProfile = (friendId) => {
 }
 export const getProfileStatus = (friendId) => {
     return (dispatch) => {
-        console.log('!!! Щас отправим запрос на бэк');
         profileAPI.getProfileStatus(friendId).then(resp => {
-            console.log('!!! в ответ вернулось: resp', resp);
             dispatch(setStatus(resp.data));
         });
     }

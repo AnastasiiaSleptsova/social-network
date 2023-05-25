@@ -14,9 +14,7 @@ const Messages = ({ messagesPage, addNewMessage,}) => {
     let addMessage = (value) => {
         addNewMessage(value.newMessageText);
     }
-
-    // const onClickHandler = () => newPastElement.current.value && addNewMessage()
-
+    
     return (
         <div>
             <div className={classes.messageWrapper}>
@@ -40,15 +38,11 @@ const AddMessageForm = (props) => {
                 className={classes.input}
                 component='textarea'
                 name='newMessageText'
-                // ref={newPastElement}
-                // onChange={onMessageChange}
-                // value={messagesPage.newMessageText}
                 placeholder="message..." />
             <button
                 className={classes.button}
                 type="submit"
                 name="sendMessage"
-            // onClick={onClickHandler}
             >send</button>
         </form>
     )
