@@ -1,16 +1,35 @@
 import { Field, reduxForm } from 'redux-form'
 import classes from './Login.module.css'
+import { Input } from '../../Components/Common/FormsControls/FormsControls'
+import { required , maxLengthCreator, } from '../../utils/validators/validators';
+import React from 'react';
+
+const maxLength20 = maxLengthCreator(20);
 
 const LoginForm = (props) => {
     return <form className={classes.loginForm} onSubmit={props.handleSubmit}>
         <div>
-            <Field className={classes.login} placeholder={"Login"} name={'login'} component={'input'}/>
+            <Field
+                className={classes.login}
+                placeholder={"Login"}
+                name={'login'} component={Input}
+                validate={[required, maxLength20,]} />
         </div>
         <div>
-            <Field className={classes.password} placeholder={"Password"} name={'password'} component={'input'}/>
+            <Field
+                className={classes.password}
+                placeholder={"Password"}
+                name={'password'}
+                component={Input}
+                validate={[required, maxLength20,]} />
         </div>
         <div>
-            <Field className={classes.checkbox} component={'input'} name={'rememberMe'} type={"checkbox"} /> remember me
+            <Field
+                className={classes.checkbox}
+                component={Input}
+                name={'rememberMe'}
+                type={"checkbox"}
+                validate={[required, maxLength20,]} /> remember me
         </div>
         <div>
             <button className={classes.button}>Login</button>
@@ -18,7 +37,7 @@ const LoginForm = (props) => {
     </form>
 }
 
-const LoginReduxForm = reduxForm ({
+const LoginReduxForm = reduxForm({
     form: 'login'
 })(LoginForm)
 
@@ -28,7 +47,7 @@ const Login = (props) => {
     }
     return <div className={classes.loginPage}>
         <h1 className={classes.title}>Login</h1>
-        <LoginReduxForm onSubmit={onSubmit}/>
+        <LoginReduxForm onSubmit={onSubmit} />
     </div>
 }
 

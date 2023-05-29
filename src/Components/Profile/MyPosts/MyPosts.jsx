@@ -9,8 +9,6 @@ const MyPosts = ({ postList, addNewPost, }) => {
 
   const posts = postList.map(post => <Post text={post.text} key={post.id} like={post.like} />);
 
-  const newPastElement = React.createRef();
-
   const onAddPost = (value) => {
     addNewPost(value.newPostText);
   }
