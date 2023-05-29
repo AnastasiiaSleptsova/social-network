@@ -1,6 +1,6 @@
 
 import React from 'react';
-import preloader from '../../img/Spinner-1s-200px.gif';
+import preloader from '../../../img/Spinner-1s-200px.gif';
 import classes from './Preloader.module.css'
 
 const Preloader = () => {

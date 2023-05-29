@@ -1,7 +1,8 @@
 import classes from './Friends.module.css'
 import React from 'react';
 import FriendsItem from './FriendItem';
-import Preloader from '../Preloader/Preloader';
+import Preloader from '../Common/Preloader/Preloader';
+
 
 const Friends = (props) => {
     return (
@@ -17,7 +18,7 @@ const Friends = (props) => {
                     />
                 ))
                 }
-                {props.isFetching && <Preloader />}
+                {props.isFetching && <Preloader /> }
             </div>
             <button
                 className={classes.button}

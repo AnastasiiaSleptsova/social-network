@@ -1,3 +1,5 @@
+import { required , maxLengthCreator, } from '../../../utils/validators/validators';
+import { Textarea } from '../../Common/FormsControls/FormsControls';
 import classes from './MyPosts.module.css'
 import Post from './Post/Post';
 import React from 'react';
@@ -22,14 +24,16 @@ const MyPosts = ({ postList, addNewPost, }) => {
   )
 }
 
+const maxLength10 = maxLengthCreator(10);
+
 const AddNewPostForm = (props) => {
   return (
     <form className={classes.yourNews} onSubmit={props.handleSubmit}>
       <Field
-        className={classes.input}
-        component='textarea'
+        component={Textarea}
         name='newPostText'
         placeholder="your news..."
+        validate={[required, maxLength10, ]}
       />
       <button
         className={classes.button}
