@@ -59,4 +59,11 @@ export const authAPI = {
                 return resp.data;
             });
     },
+    login({ email, password, rememberMe = false }) {
+        // return instance.post(`auth/login`, { email: 'am89650731404@gmail.com', password: "social1931", rememberMe });
+        return instance.post(`auth/login`, {email, password, rememberMe });
+    },
+    logout() {
+        return instance.delete(`auth/login`);
+    },
 }
