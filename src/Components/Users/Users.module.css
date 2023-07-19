@@ -1,9 +1,9 @@
-.friendList {
+.userList {
     display: flex;
     flex-direction: column;
 }
 
-.friend {
+.user {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid grey;

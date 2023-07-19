@@ -1,51 +1,50 @@
 import { usersAPI } from "../api/api"
 
 const TOOGLE_FOLLOWING = 'TOOGLE_FOLLOWING'
-const SET_FRIENDS = 'SET_FRIENDS'
-const SET_TOTAL_FRIENDS_COUNT = 'SET_TOTAL_FRIENDS_COUNT'
-const FETCH_MORE_FRIENDS = 'FETCH_MORE_FRIENDS'
+const SET_USERS = 'SET_USERS'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
+const FETCH_MORE_USERS = 'FETCH_MORE_USERS'
 const INCREMENT_CURRENT_PAGE = 'INCREMENT_CURRENT_PAGE'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
-const CLEAR_FRIENDS = 'CLEAR_FRIENDS'
+const CLEAR_USERS = 'CLEAR_USERS'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 
 const initialState = {
-    friends: [],
+    users: [],
     pageSize: 10,
-    totalFriendsCount: 0,
+    totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
     followingInProgress: [],
 };
 
-const friendsReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case TOOGLE_FOLLOWING: {
-            const newFriends = state.friends.map(friend => friend.id === action.payload.id
-                ? { ...friend, followed: !friend.followed }
-                : friend
+            const newUsers = state.users.map(user => user.id === action.payload.id
+                ? { ...user, followed: !user.followed }
+                : user
             )
-
             return {
                 ...state,
-                friends: newFriends,
+                users: newUsers,
             }
         }
-        case SET_FRIENDS: {
-            return { ...state, friends: [...state.friends, ...action.payload.friends], }
+        case SET_USERS: {
+            return { ...state, users: [...state.users, ...action.payload.users], }
         }
 
-        case CLEAR_FRIENDS: {
-            return { ...state, friends: [] }
+        case CLEAR_USERS: {
+            return { ...state, users: [] }
         }
         case INCREMENT_CURRENT_PAGE: {
             const newCurrentPage = state.currentPage + 1
             return { ...state, currentPage: newCurrentPage }
         }
-        case SET_TOTAL_FRIENDS_COUNT: {
-            return { ...state, totalFriendsCount: action.payload.totalCount }
+        case SET_TOTAL_USERS_COUNT: {
+            return { ...state, totalUsersCount: action.payload.totalCount }
         }
-        case FETCH_MORE_FRIENDS: {
+        case FETCH_MORE_USERS: {
             return state
         }
         case TOGGLE_IS_FETCHING: {
@@ -65,11 +64,11 @@ const friendsReducer = (state = initialState, action) => {
 };
 
 export const toogleFollowingUsers  = (id) => ({ type: TOOGLE_FOLLOWING, payload: { id, } })
-export const setFriends = (friends) => ({ type: SET_FRIENDS, payload: { friends } })
-export const clearFriends = () => ({ type: CLEAR_FRIENDS })
+export const setUsers = (users) => ({ type: SET_USERS, payload: { users } })
+export const clearUsers = () => ({ type: CLEAR_USERS })
 export const incrementCurrentPage = () => ({ type: INCREMENT_CURRENT_PAGE })
-export const setTotalFriendsCount = (totalCount) => ({ type: SET_TOTAL_FRIENDS_COUNT, payload: { totalCount } })
-export const fetchMoreFriends = () => ({ type: FETCH_MORE_FRIENDS })
+export const setTotalUsersCount = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, payload: { totalCount } })
+export const fetchMoreUsers = () => ({ type: FETCH_MORE_USERS })
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, payload: { isFetching } })
 export const toggleFollowingProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, payload: { isFetching, userId } })
 
@@ -79,8 +78,8 @@ export const getUsers = (currentPage, pageSize) => {
 
         usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(toggleIsFetching(false));
-            dispatch(setFriends(data.items));
-            dispatch(setTotalFriendsCount(data.totalCount));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
         })
     }
 }
@@ -91,32 +90,32 @@ export const getUsersMore = (currentPage, pageSize) => {
 
         usersAPI.getUsersMore(currentPage, pageSize).then(data => {
             dispatch(toggleIsFetching(false));
-            dispatch(setFriends(data.items));
+            dispatch(setUsers(data.items));
         })
     }
 }
-export const toogleFollowing = (friend) => { 
+export const toogleFollowing = (users) => { 
    return (dispatch) => {
-    dispatch(toggleFollowingProgress(true, friend.id));
-    if (friend.followed) {
-        usersAPI.unFollowOnUser(friend.id)
+    dispatch(toggleFollowingProgress(true, users.id));
+    if (users.followed) {
+        usersAPI.unFollowOnUser(users.id)
             .then(resp => {
                 if (resp.resultCode === 0) {
-                    dispatch(toogleFollowingUsers(friend.id));
+                    dispatch(toogleFollowingUsers(users.id));
                 }
-                dispatch(toggleFollowingProgress(false, friend.id));
+                dispatch(toggleFollowingProgress(false, users.id));
             })
     } else {
-        usersAPI.followOnUser(friend.id)
+        usersAPI.followOnUser(users.id)
             .then(resp => {
                 if (resp.resultCode === 0) {
-                    dispatch(toogleFollowingUsers(friend.id));
+                    dispatch(toogleFollowingUsers(users.id));
                 }
-                dispatch(toggleFollowingProgress(false, friend.id));
+                dispatch(toggleFollowingProgress(false, users.id));
             })
     }
    }
 }
 
 
-export default friendsReducer;
+export default usersReducer;

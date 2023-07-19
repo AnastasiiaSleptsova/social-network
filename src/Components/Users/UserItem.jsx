@@ -1,38 +1,38 @@
-import classes from './Friends.module.css'
+import classes from './Users.module.css'
 import React from 'react';
 import AvatarPlug from '../../img/avatar1.webp';
 import { Link, } from 'react-router-dom';
 import { usersAPI } from '../../api/api';
 
-const FriendsItem = ({ friend, toogleFollowing, forwardRef, followingInProgress }) => {
+const UsersItem = ({ user, toogleFollowing, forwardRef, followingInProgress }) => {
 
-    const correctSrc = friend.photos.small || AvatarPlug;
+    const correctSrc = user.photos.small || AvatarPlug;
     const handleClick = () => {
-        toogleFollowing(friend);
+        toogleFollowing(user);
     }
 
     return (
-        <div className={classes.friend} ref={forwardRef}>
+        <div className={classes.user} ref={forwardRef}>
             <Link
                 to={{
-                    pathname: `/Profile/${friend.id}`,
+                    pathname: `/Profile/${user.id}`,
                 }}
             >
                 <img className={classes.avatar} src={correctSrc} />
             </Link>
             <div className={classes.data}>
-                <div className={classes.name}>{friend.name}</div>
+                <div className={classes.name}>{user.name}</div>
                 <button className={classes.writeMessage}>Написать сообщение</button>
                 <button
                     className={classes.dropdown}
-                    disabled={followingInProgress.some(id => id === friend.id)}
+                    disabled={followingInProgress.some(id => id === user.id)}
                     onClick={handleClick}
                 >
-                    {friend.followed ? 'Unfollow' : 'Follow'}
+                    {user.followed ? 'Unfollow' : 'Follow'}
                 </button>
             </div>
         </div>
     )
 }
 
-export default FriendsItem;
+export default UsersItem;

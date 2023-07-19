@@ -1,15 +1,15 @@
-import classes from './FrendList.module.css'
+import classes from './UserList.module.css'
 import { NavLink } from 'react-router-dom';
 
-const FrendList = (props) => {
+const UserList = (props) => {
 
     return (
         <div className={classes.avatarWrapper}>
-            <NavLink to='/Frend'>
+            <NavLink to='/User'>
                 <img className={classes.avatar} src={props.avatarItem} alt={props.alt} />
             </NavLink>
         </div>
     );
 }
 
-export default FrendList;
+export default UserList;

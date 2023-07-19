@@ -2,11 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classes from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
-import FrendList from './FrendList/FrendList';
+import UserList from './UserList/UserList';
 
 const Navbar = ({ avatarList }) => {
   const generateClassName = (navData) => navData.isActive ? `${classes.item} ${classes.active}` : classes.item
-  const avatarListJSX = avatarList.map(avatar => <FrendList avatarItem={avatar.avatarka} key={avatar.id} alt={avatar.altAvatar} />);
+  const avatarListJSX = avatarList.map(
+    avatar => <UserList
+      avatarItem={avatar.avatarka}
+      key={avatar.id}
+      alt={avatar.altAvatar} />
+  );
 
   return (
     <nav className={classes.sidebar}>
@@ -18,7 +23,7 @@ const Navbar = ({ avatarList }) => {
       <br></br>
       <br></br>
       <br></br>
-      <NavLink className={generateClassName} to='/Frends'>Frends</NavLink>
+      <NavLink className={generateClassName} to='/Users'>Users</NavLink>
       <div className={classes.avatarList}>
         {avatarListJSX}
       </div>

@@ -1,7 +1,7 @@
 import { profileAPI } from "../api/api"
 
 const ADD_POST = 'ADD_POST';
-const SET_FRIENDS_PROFILE = 'SET_FRIENDS_PROFILE';
+const SET_USERS_PROFILE = 'SET_USERS_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
 const initialState = {
@@ -27,7 +27,7 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: ''
             }
         }
-        case SET_FRIENDS_PROFILE: {
+        case SET_USERS_PROFILE: {
             return { ...state, profile: action.payload.profile }
         }
         case SET_STATUS: {
@@ -40,20 +40,20 @@ const profileReducer = (state = initialState, action) => {
 };
 
 export const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: { newPostText }  });
-export const setFriendProfile = (profile) => ({ type: SET_FRIENDS_PROFILE, payload: { profile } });
+export const setUserProfile = (profile) => ({ type: SET_USERS_PROFILE, payload: { profile } });
 export const setStatus = (status) => ({ type: SET_STATUS, payload: { status } });
 
 
-export const getFriendProfile = (friendId) => {
+export const getUserProfile = (userId) => {
     return (dispatch) => {
-        profileAPI.getProfileFrend(friendId).then(resp => {
-            dispatch(setFriendProfile(resp));
+        profileAPI.getProfileFrend(userId).then(resp => {
+            dispatch(setUserProfile(resp));
         });
     }
 }
-export const getProfileStatus = (friendId) => {
+export const getProfileStatus = (userId) => {
     return (dispatch) => {
-        profileAPI.getProfileStatus(friendId).then(resp => {
+        profileAPI.getProfileStatus(userId).then(resp => {
             dispatch(setStatus(resp.data));
         });
     }

@@ -44,7 +44,7 @@ export const logOutUserAC = () => ({ type: LOGOUT_USER })
 
 export const getAuthUserData = () => {
     return (dispatch) => {
-        authAPI.me().then(resp => {
+        return authAPI.me().then(resp => {
             if (resp.resultCode === 0) {
                 const { id, login, email } = resp.data;
                 dispatch(setAuthUserData({
@@ -60,7 +60,7 @@ export const getAuthUserData = () => {
 
 export const login = ({ email, password, rememberMe = false }) => {
     return (dispatch) => {
-        authAPI.login({ email, password, rememberMe }).then(resp => {
+       authAPI.login({ email, password, rememberMe }).then(resp => {
             if (resp.data.resultCode === 0) {
                 dispatch(getAuthUserData());
             }

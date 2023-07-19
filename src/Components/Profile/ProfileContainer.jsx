@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-    getFriendProfile,
+    getUserProfile,
     getProfileStatus,
     updateProfileStatus,
 } from '../../redux/profileReducer';
@@ -17,16 +17,16 @@ import withAuthNavigate from '../HOC/withAuthNavigate';
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        const friendIdFromURL = this.props.router.params.friendId || this.props.myId;
-        this.props.getFriendProfile(friendIdFromURL);
-        this.props.getProfileStatus(friendIdFromURL);
+        const userIdFromURL = this.props.router.params.userId || this.props.myId;
+        this.props.getUserProfile(userIdFromURL);
+        this.props.getProfileStatus(userIdFromURL);
     }
 
     componentDidUpdate() {
-        const friendIdFromURL = this.props.router.params.friendId
+        const userIdFromURL = this.props.router.params.userId
         const isMyProfile = this.props.myId === this.props.profile.userId
-        if (!friendIdFromURL && !isMyProfile) {
-            this.props.getFriendProfile(this.props.myId);
+        if (!userIdFromURL && !isMyProfile) {
+            this.props.getUserProfile(this.props.myId);
             this.props.getProfileStatus(this.props.myId);
         }
     }
@@ -65,6 +65,6 @@ const withRouter = (ClassComponent) => {
 
 export default compose(
     withAuthNavigate,
-    connect(mapStateToProps, { getFriendProfile, getProfileStatus, updateProfileStatus, getAuthUserData }),
+    connect(mapStateToProps, { getUserProfile, getProfileStatus, updateProfileStatus, getAuthUserData }),
     withRouter
 )(ProfileContainer)

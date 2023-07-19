@@ -2,36 +2,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
     toogleFollowing,
-    fetchMoreFriends,
-    clearFriends,
+    fetchMoreUsers,
+    clearUsers,
     toggleFollowingProgress,
     getUsers,
     getUsersMore,
-    setTotalFriendsCount,
-} from '../../redux/frendsReducer';
-import Friends from './Friends';
+    setTotalUsersCount,
+} from '../../redux/usersReducer';
+import Users from './Users';
 import withAuthNavigate from '../HOC/withAuthNavigate';
 import { compose } from 'redux';
-class FriendsContainer extends React.Component {
+class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
     componentWillUnmount() {
-        this.props.clearFriends()
-        this.props.setTotalFriendsCount(0)
+        this.props.clearUsers()
+        this.props.setTotalUsersCount(0)
     }
 
-    fetchMoreFriends() {
+    fetchMoreUsers() {
         this.props.getUsersMore(this.props.currentPage, this.props.pageSize);
     }
 
     render() {
         return (
             <>
-                <Friends
-                    fetchMoreFriends={this.fetchMoreFriends.bind(this)}
-                    friends={this.props.friends}
+                <Users
+                    fetchMoreUsers={this.fetchMoreUsers.bind(this)}
+                    users={this.props.users}
                     toogleFollowing={this.props.toogleFollowing}
                     isFetching={this.props.isFetching}
                     toggleFollowingProgress={this.props.toggleFollowingProgress}
@@ -45,19 +45,19 @@ class FriendsContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        friends: state.friendsPage.friends,
-        pageSize: state.friendsPage.pageSize,
-        totalFriendsCount: state.friendsPage.totalFriendsCount,
-        currentPage: state.friendsPage.currentPage,
-        isFetching: state.friendsPage.isFetching,
-        followingInProgress: state.friendsPage.followingInProgress,
+        users: state.usersPage.users,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress,
     }
 }
 
 export default compose(
     withAuthNavigate,
     connect(mapStateToProps, {
-        toogleFollowing, setTotalFriendsCount, fetchMoreFriends, clearFriends,
+        toogleFollowing, setTotalUsersCount, fetchMoreUsers, clearUsers,
         toggleFollowingProgress, getUsers, getUsersMore,
     })
-)(FriendsContainer)
+)(UsersContainer)
