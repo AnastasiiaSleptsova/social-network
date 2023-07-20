@@ -31,15 +31,15 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, profile: action.payload.profile }
         }
         case SET_STATUS: {
-            return { ...state,  status: action.payload.status } 
+            return { ...state, status: action.payload.status }
         }
         default:
             return state;
     }
-    
+
 };
 
-export const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: { newPostText }  });
+export const addPostActionCreator = (newPostText) => ({ type: ADD_POST, payload: { newPostText } });
 export const setUserProfile = (profile) => ({ type: SET_USERS_PROFILE, payload: { profile } });
 export const setStatus = (status) => ({ type: SET_STATUS, payload: { status } });
 
