@@ -20,6 +20,7 @@ const PersonalInfo = (props) => {
         <img className={classes.photo} src={correctSrc} alt='avatar' />
         <div className={classes.text}>
           <h2 className={classes.name}>{props.profile.fullName}</h2>
+          {/* Логика с классовой компонентой */}
           {/* <ProfileStatus
             profileId={props.profile.userId}
             status={props.status}

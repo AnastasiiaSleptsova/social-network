@@ -43,9 +43,9 @@ const LoginForm = (props) => {
             />
             <span>remember me</span>
         </div>
-       { props.error && <div className={classes2.formSummeryError}>ERROR
-       </div>
-       }
+        {props.error && <div className={classes2.formSummeryError}>ERROR
+        </div>
+        }
         <div>
             <button className={classes.button}>Login</button>
         </div>

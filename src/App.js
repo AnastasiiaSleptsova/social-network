@@ -14,6 +14,8 @@ import Login from './Components/Login/Login';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/appReducer'
 import Preloader from './Components/Common/Preloader/Preloader';
+import UsersContainerFC from './Components/Users/UsersContainerFC';
+import ProfileContainerFC from './Components/Profile/ProfileContainerFC';
 
 const NotFountPage = () => {
   return (
@@ -42,7 +44,8 @@ class App extends Component {
               <Route
                 path='/Profile/:userId?'
                 element={(
-                  <ProfileContainer />
+                  // <ProfileContainer />
+                  <ProfileContainerFC />
                 )}
               />
               <Route
@@ -54,7 +57,8 @@ class App extends Component {
               <Route path='/News' element={<News />} />
               <Route path='/Music' element={<Music />} />
               <Route path='/Settings' element={<Settings />} />
-              <Route path='/Users' element={<UsersContainer />} />
+              {/* <Route path='/Users' element={<UsersContainer />} /> */}
+              <Route path='/Users' element={<UsersContainerFC />} />
               <Route path='/Login' element={<Login />} />
               <Route path='*' element={<NotFountPage />} />
             </Routes>

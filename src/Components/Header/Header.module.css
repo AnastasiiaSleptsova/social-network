@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: #1C3F3A;
+  background-image: linear-gradient(30deg, #44a7fd, #0048bd);
   color: #ECE8D9;
   width: 102%;
   position: relative;
@@ -13,10 +13,22 @@
 }
 
 .loginBlock {
-  position: absolute;
-  top: 1rem;
-  left: 87%;
-} 
+  width: 10%;
+  height: 100%;
+}
+
+.logOut {
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  color: #0048bd;
+}
+
+.logIn {
+  padding: 1.5rem;
+}
+
 .text {
- color: aliceblue;
+  color: #fff;
+  font-size: 1.5rem;
 }

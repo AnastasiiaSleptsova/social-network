@@ -24,9 +24,11 @@ import { compose } from 'redux';
 class UsersContainer extends React.Component {
 
     componentDidMount() {
+        console.log('!!! компонент вот-вот будет вмонтирован');
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
     componentWillUnmount() {
+        console.log('!!! вот-вот будет unMount (classComponent)');
         this.props.clearUsers()
         this.props.setTotalUsersCount(0)
     }
