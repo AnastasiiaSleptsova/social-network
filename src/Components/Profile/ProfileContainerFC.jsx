@@ -4,6 +4,7 @@ import {
     getUserProfile,
     getProfileStatus,
     updateProfileStatus,
+    savePhoto,
 } from '../../redux/profileReducer';
 import { getAuthUserData } from '../../redux/authReducer';
 import Profile from './Profile';
@@ -20,13 +21,14 @@ import {
     getMyId,
 } from '../../redux/profileSelectors'
 
-const ProfileContainerFC = (props) => {
-    const {
-        myId,
-        getUserProfile,
-        getProfileStatus,
-        profile
-    } = props
+const ProfileContainerFC = ({
+    myId, 
+    getUserProfile, 
+    getProfileStatus, 
+    profile, 
+    status, 
+    updateProfileStatus, 
+    savePhoto}) => {
 
     const params = useParams();
 
@@ -47,10 +49,13 @@ const ProfileContainerFC = (props) => {
 
     return (
         <>
-            <Profile profile={props.profile}
-                status={props.status}
-                updateProfileStatus={props.updateProfileStatus}
-                myId={props.myId} />
+            <Profile
+                profile={profile}
+                status={status}
+                updateProfileStatus={updateProfileStatus}
+                myId={myId}
+                savePhoto={savePhoto}
+            />
         </>
     )
 }
@@ -63,5 +68,6 @@ const mapStateToProps = (state) => ({
 
 export default compose(
     withAuthNavigate,
-    connect(mapStateToProps, { getUserProfile, getProfileStatus, updateProfileStatus, getAuthUserData }),
+    connect(mapStateToProps,
+        { getUserProfile, getProfileStatus, updateProfileStatus, getAuthUserData, savePhoto }),
 )(ProfileContainerFC)

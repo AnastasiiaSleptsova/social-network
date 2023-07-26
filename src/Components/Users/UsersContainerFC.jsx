@@ -41,7 +41,6 @@ const UsersContainerFC = ({
     useEffect(() => {
         getUsers(currentPage, pageSize);
         return () => {
-            console.log('!!! вот-вот будет unMount');
             clearUsers()
             setTotalUsersCount(0)
         }

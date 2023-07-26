@@ -4,12 +4,19 @@ import AvatarPlug from '../../../img/avatar1.webp';
 import ProfileStatusFC from './ProfileStatusFC/ProfileStatusFC'
 import ProfileStatus from './ProfileStatus/ProfileStatus';
 
-const PersonalInfo = (props) => {
-  const correctSrc = props.profile.photos?.small || AvatarPlug;
+const PersonalInfo = ({ profile, myId, status, updateProfileStatus, savePhoto }) => {
+  const correctSrc = profile.photos?.large || AvatarPlug;
+  const canEditPhoto = myId === profile.userId
 
-  const jobStatus = props.profile.lookingForAJob
+  const jobStatus = profile.lookingForAJob
     ? 'Да'
     : 'Нет'
+
+  const onMainPhotoSelected = (e) => {
+    if (e.target.files.length) {
+      savePhoto(e.target.files[0]);
+    }
+  }
 
   return (
     <div className={classes.mainContent}>
@@ -17,9 +24,12 @@ const PersonalInfo = (props) => {
         <img className={classes.fon} src={fon} alt='background image' />
       </div>
       <div className={classes.personalData}>
-        <img className={classes.photo} src={correctSrc} alt='avatar' />
+        <div className={classes.photoPart} >
+          <img className={classes.photo} src={correctSrc} alt='avatar' />
+          {canEditPhoto && <input className={classes.input} type='file' onChange={onMainPhotoSelected} />}
+        </div>
         <div className={classes.text}>
-          <h2 className={classes.name}>{props.profile.fullName}</h2>
+          <h2 className={classes.name}>{profile.fullName}</h2>
           {/* Логика с классовой компонентой */}
           {/* <ProfileStatus
             profileId={props.profile.userId}
@@ -28,13 +38,13 @@ const PersonalInfo = (props) => {
             myId={props.myId}
           /> */}
           <ProfileStatusFC
-            profileId={props.profile.userId}
-            status={props.status}
-            updateProfileStatus={props.updateProfileStatus}
-            myId={props.myId}
+            profileId={profile.userId}
+            status={status}
+            updateProfileStatus={updateProfileStatus}
+            myId={myId}
           />
           <div className={classes.info}>
-            {props.profile.aboutMe}
+            {profile.aboutMe}
             <br />
             В поисках работы: {jobStatus}
           </div>

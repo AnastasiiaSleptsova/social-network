@@ -1,30 +1,41 @@
 .picture {
-    margin-bottom: 2rem;
-  }
-  
-  .fon {
-    height: 10rem;
-    width: 100%;
-  }
+  margin-bottom: 2rem;
+}
 
-  .personalData {
-    display: flex;
-  }
-  
-  .photo {
-    height: 6rem;
-    width: 7rem;
-    margin-right: 2rem;
-  }
-  
-  .name {
-    font-size: 2rem;
-  }
-  
-  .info {
-    margin-top: 1rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-  
-  
+.fon {
+  height: 10rem;
+  width: 100%;
+}
+
+.personalData {
+  display: flex;
+}
+
+.photoPart {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo {
+  max-height: 20rem;
+  max-width: 20rem;
+}
+
+.input {
+margin-top: 1rem;
+
+}
+
+.text {
+  margin-left: 4rem;
+}
+
+.name {
+  font-size: 2rem;
+}
+
+.info {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
