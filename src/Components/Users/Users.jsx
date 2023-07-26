@@ -4,25 +4,25 @@ import UsersItem from './UserItem';
 import Preloader from '../Common/Preloader/Preloader';
 
 
-const Users = (props) => {
+const Users = ({users, toogleFollowing, toggleFollowingProgress, followingInProgress, isFetching, fetchMoreUsers}) => {
     return (
         <div className={classes.userList} >
             <div className={classes.users}>
-                {props.users.map((user, idx) => (
+                {users.map((user, idx) => (
                     <UsersItem
                         key={user.id}
                         user={user}
-                        toogleFollowing={props.toogleFollowing}
-                        toggleFollowingProgress={props.toggleFollowingProgress}
-                        followingInProgress={props.followingInProgress}
+                        toogleFollowing={toogleFollowing}
+                        toggleFollowingProgress={toggleFollowingProgress}
+                        followingInProgress={followingInProgress}
                     />
                 ))
                 }
-                {props.isFetching && <Preloader /> }
+                {isFetching && <Preloader /> }
             </div>
             <button
                 className={classes.button}
-                onClick={props.fetchMoreUsers}
+                onClick={fetchMoreUsers}
             >
                 Show more
             </button>

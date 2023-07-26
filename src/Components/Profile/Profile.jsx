@@ -2,8 +2,8 @@ import PersonalInfo from './ PersonalInfo/PersonalInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import Preloader from '../Common/Preloader/Preloader';
 
-const Profile = (props) => {
-  const hasProfile = !!Object.keys(props.profile).length
+const Profile = ({profile, status, updateProfileStatus, myId}) => {
+  const hasProfile = !!Object.keys(profile).length
 
   if (!hasProfile) {
     return <Preloader />
@@ -11,10 +11,10 @@ const Profile = (props) => {
   return (
     <div>
       <PersonalInfo
-        profile={props.profile}
-        status={props.status}
-        updateProfileStatus={props.updateProfileStatus} 
-        myId={props.myId}
+        profile={profile}
+        status={status}
+        updateProfileStatus={updateProfileStatus} 
+        myId={myId}
         />
       <MyPostsContainer />
     </div>

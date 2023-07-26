@@ -11,8 +11,8 @@ import { Navigate } from 'react-router-dom';
 const maxLength30 = maxLengthCreator(30);
 const maxLength20 = maxLengthCreator(20);
 
-const LoginForm = (props) => {
-    return <form className={classes.loginForm} onSubmit={props.handleSubmit}>
+const LoginForm = ({error, handleSubmit}) => {
+    return <form className={classes.loginForm} onSubmit={handleSubmit}>
         <div>
             <Field
                 className={classes.login}
@@ -43,7 +43,7 @@ const LoginForm = (props) => {
             />
             <span>remember me</span>
         </div>
-        {props.error && <div className={classes2.formSummeryError}>ERROR
+        {error && <div className={classes2.formSummeryError}>ERROR
         </div>
         }
         <div>
@@ -56,16 +56,16 @@ const LoginReduxForm = reduxForm({
     form: 'login'
 })(LoginForm)
 
-const Login = (props) => {
+const Login = ({login, isAuth}) => {
     const onSubmit = (formData) => {
-        props.login({
+        login({
             email: formData.email,
             password: formData.password,
             rememberMe: formData.rememberMe,
         })
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Navigate to={'/profile'} />
     }
 

@@ -2,14 +2,14 @@
 import classes from './DialogList.module.css'
 import { NavLink } from 'react-router-dom';
 
-const DialogList = (props) => {
+const DialogList = ({id, dialogName}) => {
     const generateClassName = (navData) => navData.isActive ? `${classes.dialogItem} ${classes.active}` : classes.dialogItem
-    const path = "/Messages/DialogList/" + props.id;
+    const path = "/Messages/DialogList/" + id;
 
     return (
         <div>
             &deg;
-            <NavLink className={generateClassName} to={path}>{props.dialogName}</NavLink>
+            <NavLink className={generateClassName} to={path}>{dialogName}</NavLink>
         </div>
     )
 }

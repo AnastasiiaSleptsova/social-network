@@ -31,9 +31,9 @@ const Messages = ({ messagesPage, addNewMessage,}) => {
     )
 }
 
-const AddMessageForm = (props) => {
+const AddMessageForm = ({handleSubmit, }) => {
     return (
-        <form className={classes.sendMessage} onSubmit={props.handleSubmit}>
+        <form className={classes.sendMessage} onSubmit={handleSubmit}>
             <Field
                 className={classes.input}
                 component='textarea'

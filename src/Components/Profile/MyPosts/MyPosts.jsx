@@ -24,9 +24,9 @@ const MyPosts = ({ postList, addNewPost, }) => {
 
 const maxLength10 = maxLengthCreator(10);
 
-const AddNewPostForm = (props) => {
+const AddNewPostForm = ({handleSubmit, }) => {
   return (
-    <form className={classes.yourNews} onSubmit={props.handleSubmit}>
+    <form className={classes.yourNews} onSubmit={handleSubmit}>
       <Field
         component={Textarea}
         name='newPostText'

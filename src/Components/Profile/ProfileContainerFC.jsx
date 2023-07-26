@@ -47,7 +47,10 @@ const ProfileContainerFC = (props) => {
 
     return (
         <>
-            <Profile {...props} />
+            <Profile profile={props.profile}
+                status={props.status}
+                updateProfileStatus={props.updateProfileStatus}
+                myId={props.myId} />
         </>
     )
 }

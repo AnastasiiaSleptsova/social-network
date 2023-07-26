@@ -6,7 +6,7 @@ import {
   getAvatarList,
 } from '../../redux/navbarSelectors';
 
-const Navbar = ({ avatarList }) => {
+const Navbar = () => {
   const generateClassName = (navData) => navData.isActive ? `${classes.item} ${classes.active}` : classes.item
 
   return (

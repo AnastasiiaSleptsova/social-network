@@ -2,8 +2,8 @@ import avatar1 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-firs
 import avatar2 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar2.jpg';
 import avatar3 from '/Users/olegsleptsov/Desktop/react-kabzda-kak-prosto/01-first-project/react-kabzda-1/src/img/avatar3.jpg';
 
-const ADD_MESSAGE = 'ADD_MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
+const ADD_MESSAGE = 'navbar/ADD_MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'navbar/UPDATE_NEW_MESSAGE_TEXT';
 
 const initialState = {
     avatarList: [

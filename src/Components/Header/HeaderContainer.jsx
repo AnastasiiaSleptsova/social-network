@@ -10,7 +10,7 @@ import {
 
 const HeaderContainer = (props) => {
 
-    return <Header {...props}  />
+    return <Header login = {props.login} logout={props.logout} isAuth={props.isAuth} />
   }
   
 const mapStateToProps = (state) => ({
