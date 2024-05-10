@@ -1,3 +1,12 @@
 .status {
-    background-color: aqua;
+    padding: 0.2rem 0.4rem;
+    font-size: 1.2rem;
+    border: 0.2rem solid #44a7fd;
+    border-image: linear-gradient(to right, #44a7fd 0%, #0048bd 100%);
+    border-image-slice: 1;
+}
+
+.input {
+    padding: 0.2rem 0.4rem;
+    font-size: 1.2rem;
 }

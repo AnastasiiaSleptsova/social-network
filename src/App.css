@@ -37,6 +37,7 @@ body {
   color: #050000;
   font-family: "Roboto";
   background-color: #E5E5E5;
+  -webkit-font-smoothing: antialiased;
 }
 
 img {

@@ -11,7 +11,7 @@ import { Navigate } from 'react-router-dom';
 const maxLength30 = maxLengthCreator(30);
 const maxLength20 = maxLengthCreator(20);
 
-const LoginForm = ({error, handleSubmit}) => {
+const LoginForm = ({ error, handleSubmit }) => {
     return <form className={classes.loginForm} onSubmit={handleSubmit}>
         <div>
             <Field
@@ -56,7 +56,7 @@ const LoginReduxForm = reduxForm({
     form: 'login'
 })(LoginForm)
 
-const Login = ({login, isAuth}) => {
+const Login = ({ login, isAuth }) => {
     const onSubmit = (formData) => {
         login({
             email: formData.email,

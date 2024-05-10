@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import classes from './ProfileStatusFC.module.css'
 
-const ProfileStatusFC = (props) => {
-    const { myId, profileId, updateProfileStatus, status: statusFromBackend } = props
+const ProfileStatusFC = ({ myId, profileId, updateProfileStatus, status: statusFromBackend }) => {
     const [isEdtiMode, setIsEdtiMode] = useState(false)
     const [localStatus, setLocalStatus] = useState('')
 
@@ -27,6 +26,7 @@ const ProfileStatusFC = (props) => {
         <>
             {isEdtiMode &&
                 <input
+                    className={classes.input}
                     onChange={onStatusChange}
                     autoFocus={true}
                     onBlur={deactivateEditMode}
@@ -37,8 +37,9 @@ const ProfileStatusFC = (props) => {
                 <span
                     className={classes.status}
                     onDoubleClick={doubleClickHandler}
-                >
+                ><em>
                     {statusFromBackend || 'Status does not specified'}
+                </em>
                 </span>
             }
         </>

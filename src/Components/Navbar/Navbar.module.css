@@ -27,25 +27,11 @@
     transition: all .3s;
   }
 
-  .item:hover {
-     color: #3f5efb;
+  .active {
+    color: #3f5efb;
     background: #fff;
+    font-size: 2rem;
     outline: none;
-    position: relative;
-    background-color: #fff;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-  }
-
-  .active {
-    color: rgb(14, 3, 78);
-  }
-
-  .generateClassName {
-    font-size: 12px;
-    color: #fff;
-    display: block;
-    padding: 12px;
-    padding-left: 30px;
-    text-decoration: none;
   }
