@@ -2,9 +2,8 @@ import classes from './PersonalInfo.module.css'
 import AvatarPlug from '../../../img/avatar1.webp';
 import ProfileStatusFC from './ProfileStatusFC/ProfileStatusFC'
 import ProfileStatus from './ProfileStatus/ProfileStatus';
-import ProfileName from './ProfileName copy/ProfileName';
 
-const PersonalInfo = ({ profile, myId, status, updateProfileStatus, savePhoto, updateProfileName}) => {
+const InfoAboutMe = ({ profile, myId, status, updateProfileStatus, savePhoto, }) => {
   const correctSrc = profile.photos?.large || AvatarPlug;
   const canEditPhoto = myId === profile.userId
   const jobStatus = profile.lookingForAJob
@@ -34,13 +33,6 @@ const PersonalInfo = ({ profile, myId, status, updateProfileStatus, savePhoto, u
         </div>
         <div className={classes.text}>
           <h2 className={classes.name}>{profile.fullName}</h2>
-          {/* <ProfileName
-            className={classes.name}
-            fullName={profile.fullName}
-            myId={myId}
-            profileId={profile.userId}
-            updateProfileName={updateProfileName}
-          /> */}
           {/* Логика с классовой компонентой */}
           {/* <ProfileStatus
             profileId={props.profile.userId}
@@ -68,7 +60,7 @@ const PersonalInfo = ({ profile, myId, status, updateProfileStatus, savePhoto, u
               <div>
                 <h1>Contacts:</h1>
                 {Object.keys(profile.contacts).map(key => {
-                  return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
+                 return <Contact key = {key} contactTitle = {key} contactValue={profile.contacts[key]}/>
                 })}
               </div>
             </em>
@@ -79,7 +71,7 @@ const PersonalInfo = ({ profile, myId, status, updateProfileStatus, savePhoto, u
   )
 }
 
-const Contact = ({ contactTitle, contactValue }) => {
+const Contact = ({contactTitle, contactValue}) => {
   return <div><b>{contactTitle}</b>:{contactValue}</div>
 }
-export default PersonalInfo;
+export default InfoAboutMe;

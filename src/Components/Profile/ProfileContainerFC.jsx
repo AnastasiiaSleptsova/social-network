@@ -9,8 +9,6 @@ import {
 import { getAuthUserData } from '../../redux/authReducer';
 import Profile from './Profile';
 import {
-    useLocation,
-    useNavigate,
     useParams,
 } from "react-router-dom";
 import { compose } from 'redux';
@@ -22,13 +20,13 @@ import {
 } from '../../redux/profileSelectors'
 
 const ProfileContainerFC = ({
-    myId, 
-    getUserProfile, 
-    getProfileStatus, 
-    profile, 
-    status, 
-    updateProfileStatus, 
-    savePhoto}) => {
+    myId,
+    getUserProfile,
+    getProfileStatus,
+    profile,
+    status,
+    updateProfileStatus,
+    savePhoto }) => {
 
     const params = useParams();
 
@@ -69,5 +67,5 @@ const mapStateToProps = (state) => ({
 export default compose(
     withAuthNavigate,
     connect(mapStateToProps,
-        { getUserProfile, getProfileStatus, updateProfileStatus, getAuthUserData, savePhoto }),
+        { getUserProfile, getProfileStatus, updateProfileStatus, getAuthUserData, savePhoto, }),
 )(ProfileContainerFC)

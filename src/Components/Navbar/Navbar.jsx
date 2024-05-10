@@ -7,7 +7,8 @@ import {
 } from '../../redux/navbarSelectors';
 
 const Navbar = () => {
-  const generateClassName = (navData) => navData.isActive ? `${classes.item} ${classes.active}` : classes.item
+  const generateClassName = (navData) => {
+    return navData.isActive ? `${classes.item} ${classes.active}` : classes.item }
 
   return (
     <aside className={classes.sidebar}>
